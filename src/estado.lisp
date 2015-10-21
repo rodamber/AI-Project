@@ -27,10 +27,10 @@
 
 (defun estados-iguais-p (estado1 estado2)
   (and
-    (eql (estado-pontos estado1) (estado-pontos estado2))
-    (eql (estado-pecas-por-colocar estado1) (estado-pecas-por-colocar estado2))
-    (eql (estado-pecas-colocadas estado1) (estado-pecas-colocadas estado2))
-    (eql (estado-tabuleiro estado1) (estado-tabuleiro estado2))
+    (equal (estado-pontos estado1) (estado-pontos estado2))
+    (equal (estado-pecas-por-colocar estado1) (estado-pecas-por-colocar estado2))
+    (equal (estado-pecas-colocadas estado1) (estado-pecas-colocadas estado2))
+    (equal (estado-tabuleiro estado1) (estado-tabuleiro estado2))
   )
 )
 
