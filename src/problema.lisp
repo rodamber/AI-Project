@@ -65,7 +65,7 @@
 			(push (cria-accao (i peca-t1)) lista-accoes))
 		(dotimes (i n-1)
 			(push (cria-accao (i peca-t2)) lista-accoes))))
-    lista-accoes)))
+    (lista-accoes)))
 
 ;; 	resultado: estado x accao -> estado
 ;;	Esta funcao recebe um estado e uma accao, e devolve um novo estado que resulta
@@ -74,12 +74,16 @@
 (defun resultado (estado accao)
 	(let ((n 17))
 	(let((count 0))
-	(let ((estado1 copia-estado (estado))
-	(desenha-estado(estado1 accao))
+	(let((lin 0))
+	(let((col accao-coluna (accao)))
+	(let ((estado1 copia-estado (estado)))
+	(while (tabuleiro-preenchido-p)
+		(+ 1 lin))
+  	(estado-tabuleiro estado1 (tabuleiro-preenche!(estado-tabuleiro estado lin col)))
 	(cons(car (estado-pecas-por-colocar estado1) )(estado-pecas-colocadas estado1))
 	((estado-pecas-por-colocar estado1)(cdr(estado-pecas-por-colocar estado1)))
 	(cond(estado-final-p (estado1))
-		estado1)
+		(estado1))
 	(cond(and ((estado-final-p (estado1))(= nil)))
 		(dotimes (i n)
 			(cond(tabuleiro-linha-completa-p(estado-tabuleiro estado1))
@@ -93,8 +97,7 @@
 			(+ 500 estado-pontos estado1))
 		(cond(eq (count 4))
 			(+ 800 estado-pontos estado1))
-		estado1)
-)))
+		(estado1))))))))
 
 ;;	qualidade: estado -> inteiro
 ;;	Esta funcao recebe um estado e retorna um valor de qualidade que corresponde ao
