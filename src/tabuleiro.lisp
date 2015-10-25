@@ -36,7 +36,7 @@ Recebe um tabuleiro e coluna, e devolve a posicao mais alta dessa coluna que
 esteja preenchida."
   (let ((numero-de-linhas (array-dimension tabuleiro 0)))
     (dotimes (linha numero-de-linhas 0)
-        (when (aref tabuleiro linha coluna)
+      (when (aref tabuleiro linha coluna)
         (return (- numero-de-linhas linha))))))
 
 (defun tabuleiro-linha-completa-p (tabuleiro linha)
