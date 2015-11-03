@@ -68,35 +68,37 @@
 
 ;; 	resultado: estado x accao -> estado
 ;;	Esta funcao recebe um estado e uma accao, e devolve um novo estado que resulta
-;;de aplicar a accao recebida no estado original.
+;;  de aplicar a accao recebida no estado original.
 
 (defun resultado (estado accao)
-	(let ((n 17))
-	(let((count 0))
-	(let((lin 0))
-	(let((col accao-coluna (accao)))
-	(let ((estado1 copia-estado (estado)))
-	(while (tabuleiro-preenchido-p)
-		(+ 1 lin))
-  	(estado-tabuleiro estado1 (tabuleiro-preenche!(estado-tabuleiro estado lin col)))
-	(cons(car (estado-pecas-por-colocar estado1) )(estado-pecas-colocadas estado1))
-	((estado-pecas-por-colocar estado1)(cdr(estado-pecas-por-colocar estado1)))
-	(cond(estado-final-p (estado1))
-		(estado1))
-	(cond(and ((estado-final-p (estado1))(= nil)))
-		(dotimes (i n)
-			(cond(tabuleiro-linha-completa-p(estado-tabuleiro estado1))
-				tabuleiro-remove-linha(estado-tabuleiro estado1 n)
-				(+ 1 count)))
-		(cond(eq (count 1))
-			(incf estado-pontos estado1 (100)))
-		(cond(eq (count 2))
-			(+ 300 estado-pontos estado1))
-		(cond(eq (count 3))
-			(+ 500 estado-pontos estado1))
-		(cond(eq (count 4))
-			(+ 800 estado-pontos estado1))
-		(estado1))))))))
+	(dotimes (altura-tabuleiro (array-dimension (estado-tabuleiro estado) 0))
+    (if (verifica-espaco-livre (estado-tabuleiro estado) (cdr accao) (car accao) altura-tabuleiro)
+      (progn (setf (estado-tabuleiro estado) (coloca-peca (estado-tabuleiro estado) (cdr accao) (car accao) altura-tabuleiro))
+             (setf altura-tabuleiro (array-dimension (estado-tabuleiro estado) 0)))))
+  (if T                                                                                             ;; verificar se o topo do tabuleiro esta preenchido
+    (let ((linhas-completas 0)) 
+      (dotimes (altura-tabuleiro (array-dimension (estado-tabuleiro estado) 0))
+        (if NIL (incf linhas-completas)))                                                           ;; verificar se linha altura-tabuleiro do tabuleiro esta preenchida
+      (cond
+        ((= linhas-completas 1) (incf (estado-pontos estado) 100))
+        ((= linhas-completas 2) (incf (estado-pontos estado) 300))
+        ((= linhas-completas 3) (incf (estado-pontos estado) 500))
+        ((= linhas-completas 4) (incf (estado-pontos estado) 800)))))
+  estado)
+                                     
+(defun verifica-espaco-livre (tabuleiro peca x y)
+  (dotimes (altura (array-dimension peca 0) T)
+           (if (dotimes (largura (array-dimension peca 1) NIL)
+                    (if (and (< (+ altura y) 18) 
+                             (< (+ largura x) 10)
+                             (aref tabuleiro (+ altura y) (+ largura x)))
+                         (return T))) (return NIL))))
+
+(defun coloca-peca (tabuleiro peca x y)
+  (dotimes (altura-peca (array-dimension peca 0) tabuleiro)
+           (dotimes (largura-peca (array-dimension peca 1))
+                     (setf (aref tabuleiro (+ y altura-peca) (+ x largura-peca)) (aref peca altura-peca largura-peca)))))
+		
 
 ;;	qualidade: estado -> inteiro
 ;;	Esta funcao recebe um estado e retorna um valor de quatidade que corresponde ao
