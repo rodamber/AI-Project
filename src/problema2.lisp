@@ -35,7 +35,7 @@
 				(cons (cria-accao (i peca-i0)) lista-accoes))
 			(dotimes (i (- n 3))
 				(cons (cria-accao (i peca-i1)) lista-accoes)))
-		 ((equal (fist estado-pecas-por-colocar estado)'l)
+		 ((equal (fist estado-pecas-por-colocar estado) 'l)
 			(dotimes (i (1- n))
 				(cons (cria-accao (i peca-l0)) lista-accoes))
 			(dotimes (i (- n 3))
