@@ -36,7 +36,7 @@ Recebe um tabuleiro e coluna, e devolve a posicao mais alta dessa coluna que
 esteja preenchida."
   (let ((numero-de-linhas (array-dimension tabuleiro 0)))
     (dotimes (linha numero-de-linhas 0)
-      (when (aref tabuleiro linha coluna)
+      (when (tabuleiro-preenchido-p tabuleiro linha coluna)
         (return (- numero-de-linhas linha))))))
 
 (defun tabuleiro-linha-completa-p (tabuleiro linha)
@@ -45,7 +45,7 @@ Recebe um tabuleiro e linha, e devolve T se todas as posicoes dessa linha
 estiverem preenchidas, e NIL caso contrario."
   (let ((numero-de-colunas (array-dimension tabuleiro 1)))
     (dotimes (coluna numero-de-colunas t)
-      (when (not (aref tabuleiro linha coluna))
+      (when (not (tabuleiro-preenchido-p tabuleiro linha coluna))
         (return nil)))))
 
 (defun tabuleiro-preenche! (tabuleiro linha coluna)
@@ -88,8 +88,8 @@ Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
 Recebe um tabuleiro e devolve T se existir alguma posicao na linha do topo do
 tabuleiro (linha 17) que esteja preenchida, e NIL caso contrario."
-  (dotimes (i (array-dimension tabuleiro 1))
-    (when (aref tabuleiro 0 i)
+  (dotimes (i (array-dimension tabuleiro 1) nil)
+    (when (tabuleiro-preenchido-p tabuleiro 0 i)
       (return t))))
 
 (defun tabuleiros-iguais-p (tab1 tab2)
