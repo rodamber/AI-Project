@@ -29,44 +29,6 @@
 ;; todas as accoes validas que podem ser feitas com a proxima peça a ser colocada.
 ;; Uma acção e considerada valida mesmo que faça o jogador perder o jogo.
 (defun accoes (estado)
-<<<<<<< HEAD
-  (let ((lista-accoes nil) (n 9))
-    (cond((and (car (estado-pecas-por-colocar estado))(= 'i))
-          (dotimes (i n)
-            (cons (cria-accao (i peca-i0)) lista-accoes))
-          (dotimes (i n-3)
-            (cons (cria-accao (i peca-i1)) lista-accoes)))
-         ((and (car (estado-pecas-por-colocar estado)) (= 'l))
-          (dotimes (i n-1)
-            (cons (cria-accao (i peca-l0)) lista-accoes))
-          (dotimes (i n-3)
-            (cons (cria-accao (i peca-l1)) lista-accoes))
-          (dotimes (i n-1)
-            (cons (cria-accao (i peca-l2)) lista-accoes))
-          (dotimes (i n-3)
-            (cons (cria-accao (i peca-l3)) lista-accoes)))
-         ((and (car (estado-pecas-por-colocar estado))(= 'o))
-          (dotimes (i n-2)
-            (cons (cria-accao (i peca-o0)) lista-accoes)))
-         ((and (car (estado-pecas-por-colocar estado))(= 's))
-          (dotimes (i n-3)
-            (cons (cria-accao (i peca-s0)) lista-accoes))
-          (dotimes (i n-2)
-            (cons (cria-accao (i peca-s1)) lista-accoes)))
-         ((and (car (estado-pecas-por-colocar estado))(= 'z))
-          (dotimes (i n-3)
-            (cons (cria-accao (i peca-z0)) lista-accoes))
-          (dotimes (i n-2)
-            (cons (cria-accao (i peca-z1)) lista-accoes)))
-         ((and (car (estado-pecas-por-colocar estado) )(= 't))
-          (dotimes (i n-1)
-            (cons (cria-accao (i peca-t0)) lista-accoes))
-          (dotimes (i n-3)
-            (cons (cria-accao (i peca-t1)) lista-accoes))
-          (dotimes (i n-1)
-            (cons (cria-accao (i peca-t2)) lista-accoes)))
-         (lista-accoes))))
-=======
 	(let ((lista-accoes nil) (n 10))
 	(cond((equal  (first estado-pecas-por-colocar estado) 'i)
 			(dotimes (i n)
@@ -103,7 +65,6 @@
 			(dotimes (i (- n 1))
 				(cons (cria-accao (i peca-t2)) lista-accoes)))
     (lista-accoes))))
->>>>>>> origin/HEAD
 
 ;;    resultado: estado x accao -> estado
 ;;  Esta funcao recebe um estado e uma accao, e devolve um novo estado que resulta
