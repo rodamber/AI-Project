@@ -70,22 +70,22 @@
 
 ;; Estrutura do problema do jogo
 ;; - estado-inicial: contem o estado inicial do problema de procura;
-;; - solucao: função que recebe um estado e devolve T se o estado
+;; - solucao: funcao que recebe um estado e devolve T se o estado
 ;;     for uma solucao para o problema de procura, e nil caso contrario;
-;; - accoes: função que recebe um estado e devolve uma lista com todas
+;; - accoes: funcao que recebe um estado e devolve uma lista com todas
 ;;	   as accoes que são possiveis fazer nesse estado;
-;; - resultado: função que dado um estado e uma accao devolve o estado 
+;; - resultado: funcao que dado um estado e uma accao devolve o estado 
 ;;     sucessor que resulta de executar a accao recebida no estado recebido;
 ;; - custo-caminho: funcao que dado um estado devolve o custo do caminho
-;;     desde o estado inicial até esse estado.
+;;     desde o estado inicial ate esse estado.
 
 (defstruct problema estado-inicial solucao accoes resultado custo-caminho)
 
 ;;	solucao: estado -> logico
-;;	Esta função recebe um estado, e devolve o valor logico verdade se o estado
+;;	Esta funcao recebe um estado, e devolve o valor logico verdade se o estado
 ;;recebido corresponder a uma solucao, e falso contrario. Um estado do jogo
-;;Tetris é considerado solucao se o topo do tabuleiro nao estiver preenchido e
-;;se ja nao existem peças por colocar, ou seja, todas as peças foram colocadas
+;;Tetris e considerado solucao se o topo do tabuleiro nao estiver preenchido e
+;;se ja nao existem pecas por colocar, ou seja, todas as pecas foram colocadas
 ;;com sucesso.
 
 (defun solucao (estado)
@@ -95,9 +95,9 @@
     (and (not preenchido) (null pecas))))
 
 ;;	accoes: estado -> lista de accoes
-;;	Esta funcao recebe um estado e devolve uma lista de acções correspondendo a
-;;todas as accoes validas que podem ser feitas com a proxima peça a ser colocada.
-;;Uma acção e considerada valida mesmo que faça o jogador perder o jogo.
+;;	Esta funcao recebe um estado e devolve uma lista de accoes correspondendo a
+;;todas as accoes validas que podem ser feitas com a proxima peca a ser colocada.
+;;Uma accao e considerada valida mesmo que faca o jogador perder o jogo.
 
 (defun accoes (estado)
   (let ((lista-accoes nil) (n 10))
@@ -199,8 +199,8 @@
   (* -1 (estado-pontos estado)))
 
 ;;	custo-oportunidade: estado -> inteiro
-;;	Esta função, dado um estado, devolve o custo de oportunidade de todas as accoes
-;;realizadas ate ao momento, assumindo que é sempre possivel fazer o maximo de pontos
+;;	Esta funcao, dado um estado, devolve o custo de oportunidade de todas as accoes
+;;realizadas ate ao momento, assumindo que e sempre possivel fazer o maximo de pontos
 ;;por cada peca colocada
 
 (defun custo-oportunidade (estado)
