@@ -10,7 +10,12 @@
 ;;     sucessor que resulta de executar a accao recebida no estado recebido;
 ;; - custo-caminho: funcao que dado um estado devolve o custo do caminho
 ;;     desde o estado inicial ate esse estado.
-(defstruct problema estado-inicial solucao accoes resultado custo-caminho)
+(defstruct problema
+  estado-inicial
+  solucao
+  accoes
+  resultado
+  custo-caminho)
 
 ;;	solucao: estado -> logico
 ;;	Esta funcao recebe um estado, e devolve o valor logico verdade se o estado
@@ -19,10 +24,11 @@
 ;;se ja nao existem pecas por colocar, ou seja, todas as pecas foram colocadas
 ;;com sucesso.
 (defun solucao (estado)
-  (let* ((tabuleiro  (estado-tabuleiro         estado))
-         (pecas      (estado-pecas-por-colocar estado))
-         (preenchido (tabuleiro-topo-preenchido-p   tabuleiro)))
-    (and (not preenchido) (null pecas))))
+  (let* ((tabuleiro  (estado-tabuleiro            estado))
+         (pecas      (estado-pecas-por-colocar    estado))
+         (preenchido (tabuleiro-topo-preenchido-p tabuleiro)))
+    (and (not preenchido)
+         (null pecas))))
 
 ;;	accoes: estado -> lista de accoes
 ;;	Esta funcao recebe um estado e devolve uma lista de accoes correspondendo a
@@ -31,35 +37,21 @@
 ;;jogo.
 (defun accoes (estado)
   (let ((lista-accoes nil)
-        (n 10))
-    (case (first (estado-pecas-por-colocar estado))
-      (i (dotimes (i n)
-           (setf lista-accoes (cons (cria-accao i peca-i0) lista-accoes)))
-         (dotimes (i (- n 3))
-           (setf lista-accoes (cons (cria-accao i peca-i1) lista-accoes))))
-      (l (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-l0) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-l2) lista-accoes)))
-         (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-l1) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-l3) lista-accoes))))
-      (o (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-o0) lista-accoes))))
-      (s (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-s0) lista-accoes)))
-         (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-s1) lista-accoes))))
-      (z (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-z0) lista-accoes)))
-         (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-z1) lista-accoes))))
-      (t (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-t0) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-t2) lista-accoes)))
-         (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-t1) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-t3) lista-accoes)))))
-    lista-accoes))
+        (numero-de-colunas 10))
+    (labels ((accoes-validas (peca)
+                  (let* ((largura         (array-dimension peca 1))
+                         (colunas-validas (- (1+ numero-de-colunas) largura)))
+                    (dotimes (i colunas-validas)
+                      (setf lista-accoes
+                            (cons (cria-accao i peca) lista-accoes))))))
+      (case (first (estado-pecas-por-colocar estado))
+        (i (map 'list #'accoes-validas (list peca-i0 peca-i1)))
+        (l (map 'list #'accoes-validas (list peca-l0 peca-l1 peca-l2 peca-l3)))
+        (o (map 'list #'accoes-validas (list peca-o0)))
+        (s (map 'list #'accoes-validas (list peca-s0 peca-s1)))
+        (z (map 'list #'accoes-validas (list peca-z0 peca-z1)))
+        (t (map 'list #'accoes-validas (list peca-t0 peca-t1 peca-t2 peca-t3))))
+      lista-accoes)))
 
 ;;  resultado: estado x accao -> estado
 ;;	Esta funcao recebe um estado e uma accao, e devolve um novo estado que
