@@ -136,10 +136,10 @@
 
 (defun pontos-maximos (lis)
   (cond ((equal (first lis) 'i)
-         (+ (pontos-maximos2 (rest lis)) 800))
+         (+ (pontos-maximos (rest lis)) 800))
         ((or (equal (first lis) 'j) (equal(first lis) 'l))
-         (+ (pontos-maximos2 (rest lis)) 500))
+         (+ (pontos-maximos (rest lis)) 500))
         ((or (equal (first lis) 's) (equal(first lis) 'z) (equal (first lis) 't)
              (equal(first lis) 'o))
-         (+ (pontos-maximos2 (rest lis)) 300))
+         (+ (pontos-maximos (rest lis)) 300))
         (t 0)))
