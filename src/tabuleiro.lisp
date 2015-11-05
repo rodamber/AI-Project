@@ -86,12 +86,15 @@ Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
       (setf (aref tabuleiro linha-2 i) x))))
 
 (defun tabuleiro-remove-linhas-completas! (tabuleiro)
-  "tabuleiro-remove-linhas-completas!: tabuleiro --> {}
-Remove todas as linhas do tabuleiro que estejam completas."
-  (let ((numero-de-linhas (array-dimension tabuleiro 0)))
-    (dotimes (linha numero-de-linhas)
+  "tabuleiro-remove-linhas-completas!: tabuleiro --> inteiro 
+Remove todas as linhas do tabuleiro que estejam completas. Devolve o numero de
+linhas removidas."
+  (let ((numero-de-linhas (array-dimension tabuleiro 0))
+        (linhas-removidas 0))
+    (dotimes (linha numero-de-linhas linhas-removidas)
       (when (tabuleiro-linha-completa-p tabuleiro linha)
-        (tabuleiro-remove-linha! tabuleiro linha)))))
+        (progn (incf linhas-removidas)
+               (tabuleiro-remove-linha! tabuleiro linha))))))
 
 (defun tabuleiro-topo-preenchido-p (tabuleiro)
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
