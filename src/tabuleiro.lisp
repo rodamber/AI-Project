@@ -35,9 +35,10 @@ preenchida, e NIL caso contrario."
 Recebe um tabuleiro e coluna, e devolve a posicao mais alta dessa coluna que
 esteja preenchida."
   (let ((numero-de-linhas (array-dimension tabuleiro 0)))
-    (dotimes (linha numero-de-linhas 0)
-      (when (tabuleiro-preenchido-p tabuleiro linha coluna)
-        (return (- numero-de-linhas linha))))))
+    (loop for linha from (1- numero-de-linhas) downto 0
+          do (when (tabuleiro-preenchido-p tabuleiro linha coluna)
+               (return-from tabuleiro-altura-coluna (1+ linha))))
+    0))
 
 (defun tabuleiro-linha-completa-p (tabuleiro linha)
   "tabuleiro-linha-completa-p: tabuleiro x inteiro --> logico
@@ -54,11 +55,11 @@ Recebe um tabuleiro, linha e coluna, e altera o tabuleiro para na posicao
 correspondente a linha e coluna passar a estar preenchido. Se o numero de linha
 e de coluna recebidos nao forem validos (i.e. nao estiverem entre 0 e 17, e 0 e
 9), nada e feito. O valor devolvido por esta funcao nao esta definido"
-    (when (and (> linha  0)
-               (> coluna 0)
-               (< linha  (array-dimension tabuleiro 0))
-               (< coluna (array-dimension tabuleiro 1))
-      (setf (aref tabuleiro linha coluna) t))))
+  (when (and (>= linha  0)
+             (>= coluna 0)
+             (< linha  (array-dimension tabuleiro 0))
+             (< coluna (array-dimension tabuleiro 1))
+             (setf (aref tabuleiro linha coluna) t))))
 
 (defun tabuleiro-remove-linha! (tabuleiro linha)
   "tabuleiro-remove-linha!: tabuleiro x inteiro --> {}
@@ -78,11 +79,11 @@ O valor devolvido por esta funcao nao esta definido."
 (defun tabuleiro-troca-linhas! (tabuleiro linha-1 linha-2)
   "tabuleiro-troca-linhas!: tabuleiro x inteiro x inteiro --> tabuleiro
 Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
-    (dotimes (i (array-dimension tabuleiro 1))
-      (let ((x (aref tabuleiro linha-1 i))
-            (y (aref tabuleiro linha-2 i)))
-        (setf (aref tabuleiro linha-1 i) y)
-        (setf (aref tabuleiro linha-2 i) x))))
+  (dotimes (i (array-dimension tabuleiro 1))
+    (let ((x (aref tabuleiro linha-1 i))
+          (y (aref tabuleiro linha-2 i)))
+      (setf (aref tabuleiro linha-1 i) y)
+      (setf (aref tabuleiro linha-2 i) x))))
 
 (defun tabuleiro-topo-preenchido-p (tabuleiro)
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
@@ -114,3 +115,57 @@ alteracao no array original tem repercussao no tabuleiro devolvido e
 vice-versa."
   (copia-array2D array))
 
+(defun tabuleiro-executa-accao! (tabuleiro accao)
+  "tabuleiro-executa-accao!: tabuleiro x accao --> tabuleiro
+Recebe um tabuleiro e devolve um novo tabuleiro com a peca colocada na coluna
+correspondente de acordo com o parametro accao. Esta funcao nao verifica a
+validade da accao, ou seja, nao verifica se a peca sera colocada for dos limites
+laterais do tabuleiro."
+  (let* ((coluna          (accao-coluna accao))
+         (peca            (accao-peca   accao))
+
+         (altura-peca     (array-dimension peca 0))
+         (largura-peca    (array-dimension peca 1))
+
+         ;; Lista com as alturas das colunas abrangidas pela peca. Por exemplo,
+         ;; uma peca com largura 3 a ser colocada na coluna 2 abrange as colunas
+         ;; 2, 3 e 4 do tabuleiro.
+         (alturas-colunas (loop for c from coluna to (1- (+ coluna largura-peca))
+                                collect (tabuleiro-altura-coluna tabuleiro c)))
+         ;; Sabendo qual a coluna mais alta das colunas abrangidas pela peca, a
+         ;; linha onde a porcao inferior da peca sera colocada sera entao
+         ;; determinada por essa altura e pela posicao da parte mais baixa da
+         ;; peca correspondente a essa coluna.
+         (indice-coluna-mais-alta
+                          (max-indice  alturas-colunas))
+         (altura-coluna-mais-alta
+                          (apply #'max alturas-colunas))
+         (deslocamento    (dotimes (i altura-peca)
+                            (when (aref peca i indice-coluna-mais-alta)
+                              (return i))))
+         (linha           (- altura-coluna-mais-alta deslocamento)))
+    (tabuleiro-coloca-peca! tabuleiro peca linha coluna)))
+
+(defun tabuleiro-coloca-peca! (tabuleiro peca linha coluna)
+  "tabuleiro-coloca-peca!: tabuleiro x peca x inteiro x inteiro --> tabuleiro
+Recebe um tabuleiro, a peca a colocar no tabuleiro e a linha e a coluna onde
+posicionar o elemento inferior esquerdo da peca. Esta funcao nao verifica se e
+valido colocar a peca na posicao pretendida."
+  (let ((altura-peca  (array-dimension peca 0))
+        (largura-peca (array-dimension peca 1)))
+    (dotimes (i altura-peca tabuleiro)
+      (dotimes (j largura-peca)
+        (when (aref peca i j)
+          (tabuleiro-preenche! tabuleiro
+                               (+ linha  i)
+                               (+ coluna j)))))))
+
+(defun max-indice (lista)
+  "max-indice: lista --> inteiro
+Recebe uma lista e devolve o indice do elemento maximo dessa lista."
+  (let ((max    (apply #'max lista))
+        (indice 0))
+    (dolist (x lista)
+      (if (= x max)
+          (return indice)
+        (incf indice)))))
