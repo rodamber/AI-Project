@@ -92,10 +92,11 @@ Remove todas as linhas do tabuleiro que estejam completas. Devolve o numero de
 linhas removidas."
   (let ((numero-de-linhas (array-dimension tabuleiro 0))
         (linhas-removidas 0))
-    (dotimes (linha numero-de-linhas linhas-removidas)
+    (loop for linha from (1- numero-de-linhas) downto 0 do
       (when (tabuleiro-linha-completa-p tabuleiro linha)
         (progn (incf linhas-removidas)
-               (tabuleiro-remove-linha! tabuleiro linha))))))
+               (tabuleiro-remove-linha! tabuleiro linha))))
+    linhas-removidas))
 
 (defun tabuleiro-topo-preenchido-p (tabuleiro)
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
