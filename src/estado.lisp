@@ -21,9 +21,9 @@
 ;; novo estado e vice-versa.
 (defun copia-estado (estado)
   (make-estado :pontos (estado-pontos estado)
-               :pecas-por-colocar (estado-pecas-por-colocar estado)
-               :pecas-colocadas   (estado-pecas-colocadas   estado)
-               :tabuleiro         (copia-tabuleiro (estado-tabuleiro estado))))
+               :pecas-por-colocar (copy-list (estado-pecas-por-colocar estado))
+               :pecas-colocadas   (copy-list (estado-pecas-colocadas   estado))
+               :tabuleiro         (copia-tabuleiro (copia-tabuleiro (estado-tabuleiro estado)))))
 
 ;; estados-iguais-p: estado x estado -> logico
 ;; Este teste recebe dois estados, e devolve o valor logico verdade se os dois
