@@ -57,61 +57,37 @@
 ;;	Esta funcao recebe um estado e uma accao, e devolve um novo estado que
 ;;  resulta de aplicar a accao recebida no estado original.
 (defun resultado (estado accao)
-  (setf (estado-pecas-colocadas estado)
-        (cons (first (estado-pecas-por-colocar estado))
-              (estado-pecas-colocadas estado)))
+  (let* ((letra       (peca->letra (accao-peca accao)))
+         (novo-estado (copia-estado estado))
+         (tabuleiro   (estado-tabuleiro novo-estado))
 
-  (setf (estado-pecas-por-colocar estado)
-        (rest (estado-pecas-por-colocar estado)))
+         (novas-pecas-por-colocar
+          (remove letra (estado-pecas-por-colocar novo-estado)))
+         (novas-pecas-colocadas
+          (cons   letra (estado-pecas-colocadas   novo-estado))))
 
-  (let* ((tabuleiro        (estado-tabuleiro estado))
-         (tabuleiro-altura (array-dimension tabuleiro 0))
-         (peca             (accao-peca accao))
-         (peca-coluna      (accao-coluna accao))
-         (linhas-completas 0))
+    (progn (setf (estado-pecas-por-colocar novo-estado) novas-pecas-por-colocar)
+           (setf (estado-pecas-colocadas   novo-estado) novas-pecas-colocadas)
+           (tabuleiro-executa-accao! tabuleiro accao)
+           (when (not (tabuleiro-topo-preenchido-p tabuleiro))
+             (let ((n-linhas-completas (tabuleiro-remove-linhas-completas! tabuleiro)))
+               (case n-linhas-completas
+                 (1 (incf (estado-pontos novo-estado) 100))
+                 (2 (incf (estado-pontos novo-estado) 300))
+                 (3 (incf (estado-pontos novo-estado) 500))
+                 (4 (incf (estado-pontos novo-estado) 800)))))
+           novo-estado)))
 
-    (dotimes (linha-tabuleiro tabuleiro-altura)
-      (if (verifica-espaco-livre tabuleiro
-                                 peca
-                                 peca-coluna
-                                 linha-tabuleiro)
-          (progn (setf (estado-tabuleiro estado)
-                       (coloca-peca tabuleiro
-                                    peca
-                                    peca-coluna
-                                    linha-tabuleiro))
-                 (setf linha-tabuleiro
-                       tabuleiro-altura))))
-
-    (if (tabuleiro-topo-preenchido-p tabuleiro)
-        (return-from resultado estado))
-
-    (dotimes (linha-tabuleiro tabuleiro-altura)
-      (if (tabuleiro-linha-completa-p tabuleiro
-                                      linha-tabuleiro)
-          (progn (incf linhas-completas)
-                 (tabuleiro-remove-linha! tabuleiro
-                                          linha-tabuleiro))))
-    (case linhas-completas
-      (1 (incf (estado-pontos estado) 100))
-      (2 (incf (estado-pontos estado) 300))
-      (3 (incf (estado-pontos estado) 500))
-      (4 (incf (estado-pontos estado) 800)))
-
-    estado))
-
-(defun verifica-espaco-livre (tabuleiro peca x y)
-  (dotimes (linha (array-dimension peca 0) T)
-    (dotimes (coluna (array-dimension peca 1))
-      (if (and (< (+ linha  y) (array-dimension tabuleiro 0))
-               (< (+ coluna x) (array-dimension tabuleiro 1))
-               (tabuleiro-preenchido-p tabuleiro (+ linha y) (+ coluna x)))
-          (return-from verifica-espaco-livre NIL)))))
-
-(defun coloca-peca (tabuleiro peca x y)
-  (dotimes (altura-peca (array-dimension peca 0) tabuleiro)
-    (dotimes (largura-peca (array-dimension peca 1))
-      (tabuleiro-preenche! tabuleiro (+ y altura-peca) (+ x largura-peca)))))
+(defun peca->letra (peca)
+  "peca->letra: peca --> simbolo
+Dada uma peca, devolve a letra que representa a peca."
+  (cond ((member peca (list peca-i0 peca-i1)                 :test #'equalp) 'i)
+        ((member peca (list peca-l0 peca-l1 peca-l2 peca-l3) :test #'equalp) 'l)
+        ((member peca (list peca-j0 peca-j1 peca-j2 peca-j3) :test #'equalp) 'j)
+        ((member peca (list peca-o0)                         :test #'equalp) 'o)
+        ((member peca (list peca-l0 peca-l1)                 :test #'equalp) 's)
+        ((member peca (list peca-l0 peca-l1)                 :test #'equalp) 'z)
+        ((member peca (list peca-l0 peca-l1 peca-l2 peca-l3) :test #'equalp) 't)))
 
 ;;	qualidade: estado -> inteiro
 ;;	Esta funcao recebe um estado e retorna um valor de quatidade que corresponde ao
