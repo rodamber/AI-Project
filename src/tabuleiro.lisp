@@ -67,14 +67,15 @@ Recebe um tabuleiro e linha, e altera o tabuleiro recebido removendo essa linha
 do tabuleiro, fazendo com que as linhas por cima da linha removida descam uma
 linha. As linhas que estao por baixo da linha removida nao podem ser alteradas.
 O valor devolvido por esta funcao nao esta definido."
-  (dotimes (i linha)
-    ;; Trocam-se as linhas de modo a que a linha a ser removida se encontre no
-    ;; topo do tabuleiro no final do ciclo e que as suas superiores descam uma
-    ;; linha.
-    (tabuleiro-troca-linhas! tabuleiro (- linha i) (- linha i 1)))
-  (dotimes (i (array-dimension tabuleiro 1))
-    ;; No final, "remove-se" a linha do topo.
-    (setf (aref tabuleiro 0 i) nil)))
+  (let ((numero-de-linhas (array-dimension tabuleiro 0)))
+    (loop for i from linha to (- numero-de-linhas 2) do
+      ;; Trocam-se as linhas de modo a que a linha a ser removida se encontre no
+      ;; topo do tabuleiro no final do ciclo e que as suas superiores descam uma
+      ;; linha. Se a linha for a do topo, nao ha necessidade de fazer trocas.
+      (tabuleiro-troca-linhas! tabuleiro i (1+ i)))
+    (dotimes (i (array-dimension tabuleiro 1))
+      ;; No final, "remove-se" a linha do topo.
+      (setf (aref tabuleiro (1- numero-de-linhas) i) nil))))
 
 (defun tabuleiro-troca-linhas! (tabuleiro linha-1 linha-2)
   "tabuleiro-troca-linhas!: tabuleiro x inteiro x inteiro --> tabuleiro
@@ -99,10 +100,12 @@ linhas removidas."
 (defun tabuleiro-topo-preenchido-p (tabuleiro)
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
 Recebe um tabuleiro e devolve T se existir alguma posicao na linha do topo do
-tabuleiro (linha 17) que esteja preenchida, e NIL caso contrario."
-  (dotimes (i (array-dimension tabuleiro 1) nil)
-    (when (tabuleiro-preenchido-p tabuleiro 0 i)
-      (return t))))
+tabuleiro que esteja preenchida, e NIL caso contrario."
+  (let ((numero-de-linhas  (array-dimension tabuleiro 0))
+        (numero-de-colunas (array-dimension tabuleiro 1)))
+    (dotimes (coluna numero-de-colunas nil)
+      (when (tabuleiro-preenchido-p tabuleiro (1- numero-de-linhas) coluna)
+        (return t)))))
 
 (defun tabuleiros-iguais-p (tab1 tab2)
   "tabuleiros-iguais-p: tabuleiro x tabuleiro --> logico
