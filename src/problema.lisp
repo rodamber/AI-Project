@@ -43,13 +43,14 @@
                          (colunas-validas (- (1+ numero-de-colunas) largura)))
                     (dotimes (i colunas-validas)
                       (setf lista-accoes
-                            (cons (cria-accao i peca) lista-accoes))))))
+                            (append lista-accoes (list (cria-accao i peca))))))))
       (case (first (estado-pecas-por-colocar estado))
         (i (map 'list #'accoes-validas (list peca-i0 peca-i1)))
         (l (map 'list #'accoes-validas (list peca-l0 peca-l1 peca-l2 peca-l3)))
         (o (map 'list #'accoes-validas (list peca-o0)))
         (s (map 'list #'accoes-validas (list peca-s0 peca-s1)))
         (z (map 'list #'accoes-validas (list peca-z0 peca-z1)))
+        (j (map 'list #'accoes-validas (list peca-j0 peca-j1 peca-j2 peca-j3)))
         (t (map 'list #'accoes-validas (list peca-t0 peca-t1 peca-t2 peca-t3))))
       lista-accoes)))
 
@@ -85,9 +86,9 @@ Dada uma peca, devolve a letra que representa a peca."
         ((member peca (list peca-l0 peca-l1 peca-l2 peca-l3) :test #'equalp) 'l)
         ((member peca (list peca-j0 peca-j1 peca-j2 peca-j3) :test #'equalp) 'j)
         ((member peca (list peca-o0)                         :test #'equalp) 'o)
-        ((member peca (list peca-l0 peca-l1)                 :test #'equalp) 's)
-        ((member peca (list peca-l0 peca-l1)                 :test #'equalp) 'z)
-        ((member peca (list peca-l0 peca-l1 peca-l2 peca-l3) :test #'equalp) 't)))
+        ((member peca (list peca-s0 peca-s1)                 :test #'equalp) 's)
+        ((member peca (list peca-z0 peca-z1)                 :test #'equalp) 'z)
+        ((member peca (list peca-t0 peca-t1 peca-t2 peca-t3) :test #'equalp) 't)))
 
 ;;	qualidade: estado -> inteiro
 ;;	Esta funcao recebe um estado e retorna um valor de quatidade que corresponde ao
