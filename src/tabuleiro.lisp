@@ -28,7 +28,7 @@ entidade diferente da primeira."
   "tabuleiro-preenchido-p: tabuleiro x inteiro x inteiro --> logico
 Recebe um tabuleiro, linha e coluna, e devolve T se essa posicao estiver
 preenchida, e NIL caso contrario."
-  (aref tabuleiro (- (array-dimension tabuleiro 0) linha 1) coluna))
+  (aref tabuleiro linha coluna))
 
 (defun tabuleiro-altura-coluna (tabuleiro coluna)
   "tabuleiro-altura-coluna: tabuleiro x inteiro --> inteiro
@@ -43,10 +43,9 @@ esteja preenchida."
   "tabuleiro-linha-completa-p: tabuleiro x inteiro --> logico
 Recebe um tabuleiro e linha, e devolve T se todas as posicoes dessa linha
 estiverem preenchidas, e NIL caso contrario."
-  (setf linha (- (array-dimension tabuleiro 0) linha 1))
   (let ((numero-de-colunas (array-dimension tabuleiro 1)))
     (dotimes (coluna numero-de-colunas t)
-      (when (not (aref tabuleiro linha coluna))
+      (when (not (tabuleiro-preenchido-p tabuleiro linha coluna))
         (return nil)))))
 
 (defun tabuleiro-preenche! (tabuleiro linha coluna)
@@ -55,9 +54,8 @@ Recebe um tabuleiro, linha e coluna, e altera o tabuleiro para na posicao
 correspondente a linha e coluna passar a estar preenchido. Se o numero de linha
 e de coluna recebidos nao forem validos (i.e. nao estiverem entre 0 e 17, e 0 e
 9), nada e feito. O valor devolvido por esta funcao nao esta definido"
-    (setf linha (- (array-dimension tabuleiro 0) linha 1))
-    (when (and (>= linha  0)
-               (>= coluna 0)
+    (when (and (> linha  0)
+               (> coluna 0)
                (< linha  (array-dimension tabuleiro 0))
                (< coluna (array-dimension tabuleiro 1))
       (setf (aref tabuleiro linha coluna) t))))
@@ -68,7 +66,6 @@ Recebe um tabuleiro e linha, e altera o tabuleiro recebido removendo essa linha
 do tabuleiro, fazendo com que as linhas por cima da linha removida descam uma
 linha. As linhas que estao por baixo da linha removida nao podem ser alteradas.
 O valor devolvido por esta funcao nao esta definido."
-  (setf linha (- (array-dimension tabuleiro 0) linha 1))
   (dotimes (i linha)
     ;; Trocam-se as linhas de modo a que a linha a ser removida se encontre no
     ;; topo do tabuleiro no final do ciclo e que as suas superiores descam uma
@@ -92,7 +89,7 @@ Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
 Recebe um tabuleiro e devolve T se existir alguma posicao na linha do topo do
 tabuleiro (linha 17) que esteja preenchida, e NIL caso contrario."
   (dotimes (i (array-dimension tabuleiro 1) nil)
-    (when (tabuleiro-preenchido-p tabuleiro (1- (array-dimension tabuleiro 0)) i)
+    (when (tabuleiro-preenchido-p tabuleiro 0 i)
       (return t))))
 
 (defun tabuleiros-iguais-p (tab1 tab2)
@@ -101,7 +98,7 @@ Devolve T se os dois tabuleiros forem iguais (i.e. tiverem o mesmo conteudo), e
 NIL caso contrario"
   (equalp tab1 tab2))
 
-(defun tabuleiro->array (tabuleiro) ;; TALK A BOOT IT
+(defun tabuleiro->array (tabuleiro)
   "tabuleiro->array: tabuleiro --> array
 Recebe um tabuleiro e devolve um novo array com 18 linhas e 10 colunas, que para
 cada linha e coluna devera conter o valor logico correspondente a cada posicao
@@ -109,7 +106,7 @@ do tabuleiro. Nenhuma alteracao no tabuleiro tem repercussao no array devolvido
 e vice-versa."
   (copia-tabuleiro tabuleiro))
 
-(defun array->tabuleiro (array) ;; TALK A BOOT IT
+(defun array->tabuleiro (array)
   "array->tabuleiro: array --> tabuleiro
 Recebe um array com 18 linhas e 10 colunas cujas posicoes tem o valor logico T
 ou NIL, e constroi um novo tabuleiro com o conteudo do array recebido. Nenhuma
