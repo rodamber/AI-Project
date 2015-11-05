@@ -57,12 +57,12 @@
 ;;	Esta funcao recebe um estado e uma accao, e devolve um novo estado que
 ;;  resulta de aplicar a accao recebida no estado original.
 (defun resultado (estado accao)
-  (let* ((letra       (peca->letra (accao-peca accao)))
-         (novo-estado (copia-estado estado))
+  (let* ((novo-estado (copia-estado estado))
+         (letra       (first (estado-pecas-por-colocar novo-estado)))
          (tabuleiro   (estado-tabuleiro novo-estado))
 
          (novas-pecas-por-colocar
-          (remove letra (estado-pecas-por-colocar novo-estado)))
+          (rest (estado-pecas-por-colocar novo-estado)))
          (novas-pecas-colocadas
           (cons   letra (estado-pecas-colocadas   novo-estado))))
 
