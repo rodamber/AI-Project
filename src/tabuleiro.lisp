@@ -85,6 +85,14 @@ Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
       (setf (aref tabuleiro linha-1 i) y)
       (setf (aref tabuleiro linha-2 i) x))))
 
+(defun tabuleiro-remove-linhas-completas! (tabuleiro)
+  "tabuleiro-remove-linhas-completas!: tabuleiro --> {}
+Remove todas as linhas do tabuleiro que estejam completas."
+  (let ((numero-de-linhas (array-dimension tabuleiro 0)))
+    (dotimes (linha numero-de-linhas)
+      (when (tabuleiro-linha-completa-p tabuleiro linha)
+        (tabuleiro-remove-linha! tabuleiro linha)))))
+
 (defun tabuleiro-topo-preenchido-p (tabuleiro)
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
 Recebe um tabuleiro e devolve T se existir alguma posicao na linha do topo do
@@ -121,11 +129,11 @@ Recebe um tabuleiro e devolve um novo tabuleiro com a peca colocada na coluna
 correspondente de acordo com o parametro accao. Esta funcao nao verifica a
 validade da accao, ou seja, nao verifica se a peca sera colocada for dos limites
 laterais do tabuleiro."
-  (let* ((coluna          (accao-coluna accao))
-         (peca            (accao-peca   accao))
+  (let* ((coluna (accao-coluna accao))
+         (peca   (accao-peca   accao))
 
-         (altura-peca     (array-dimension peca 0))
-         (largura-peca    (array-dimension peca 1))
+         (altura-peca  (array-dimension peca 0))
+         (largura-peca (array-dimension peca 1))
 
          ;; Lista com as alturas das colunas abrangidas pela peca. Por exemplo,
          ;; uma peca com largura 3 a ser colocada na coluna 2 abrange as colunas
@@ -136,14 +144,12 @@ laterais do tabuleiro."
          ;; linha onde a porcao inferior da peca sera colocada sera entao
          ;; determinada por essa altura e pela posicao da parte mais baixa da
          ;; peca correspondente a essa coluna.
-         (indice-coluna-mais-alta
-                          (max-indice  alturas-colunas))
-         (altura-coluna-mais-alta
-                          (apply #'max alturas-colunas))
-         (deslocamento    (dotimes (i altura-peca)
-                            (when (aref peca i indice-coluna-mais-alta)
-                              (return i))))
-         (linha           (- altura-coluna-mais-alta deslocamento)))
+         (indice-coluna-mais-alta (max-indice  alturas-colunas))
+         (altura-coluna-mais-alta (apply #'max alturas-colunas))
+         (deslocamento            (dotimes (i altura-peca)
+                                    (when (aref peca i indice-coluna-mais-alta)
+                                      (return i))))
+         (linha                   (- altura-coluna-mais-alta deslocamento)))
     (tabuleiro-coloca-peca! tabuleiro peca linha coluna)))
 
 (defun tabuleiro-coloca-peca! (tabuleiro peca linha coluna)
