@@ -10,7 +10,12 @@
 ;;     sucessor que resulta de executar a accao recebida no estado recebido;
 ;; - custo-caminho: funcao que dado um estado devolve o custo do caminho
 ;;     desde o estado inicial ate esse estado.
-(defstruct problema estado-inicial solucao accoes resultado custo-caminho)
+(defstruct problema
+  estado-inicial
+  solucao
+  accoes
+  resultado
+  custo-caminho)
 
 ;;	solucao: estado -> logico
 ;;	Esta funcao recebe um estado, e devolve o valor logico verdade se o estado
@@ -19,10 +24,11 @@
 ;;se ja nao existem pecas por colocar, ou seja, todas as pecas foram colocadas
 ;;com sucesso.
 (defun solucao (estado)
-  (let* ((tabuleiro  (estado-tabuleiro         estado))
-         (pecas      (estado-pecas-por-colocar estado))
-         (preenchido (tabuleiro-topo-preenchido-p   tabuleiro)))
-    (and (not preenchido) (null pecas))))
+  (let* ((tabuleiro  (estado-tabuleiro            estado))
+         (pecas      (estado-pecas-por-colocar    estado))
+         (preenchido (tabuleiro-topo-preenchido-p tabuleiro)))
+    (and (not preenchido)
+         (null pecas))))
 
 ;;	accoes: estado -> lista de accoes
 ;;	Esta funcao recebe um estado e devolve uma lista de accoes correspondendo a
@@ -31,95 +37,58 @@
 ;;jogo.
 (defun accoes (estado)
   (let ((lista-accoes nil)
-        (n 10))
-    (case (first (estado-pecas-por-colocar estado))
-      (i (dotimes (i n)
-           (setf lista-accoes (cons (cria-accao i peca-i0) lista-accoes)))
-         (dotimes (i (- n 3))
-           (setf lista-accoes (cons (cria-accao i peca-i1) lista-accoes))))
-      (l (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-l0) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-l2) lista-accoes)))
-         (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-l1) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-l3) lista-accoes))))
-      (o (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-o0) lista-accoes))))
-      (s (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-s0) lista-accoes)))
-         (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-s1) lista-accoes))))
-      (z (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-z0) lista-accoes)))
-         (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-z1) lista-accoes))))
-      (t (dotimes (i (- n 2))
-           (setf lista-accoes(cons (cria-accao i peca-t0) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-t2) lista-accoes)))
-         (dotimes (i (1- n))
-           (setf lista-accoes(cons (cria-accao i peca-t1) lista-accoes))
-           (setf lista-accoes(cons (cria-accao i peca-t3) lista-accoes)))))
-    lista-accoes))
+        (numero-de-colunas 10))
+    (labels ((accoes-validas (peca)
+                  (let* ((largura         (array-dimension peca 1))
+                         (colunas-validas (- (1+ numero-de-colunas) largura)))
+                    (dotimes (i colunas-validas)
+                      (setf lista-accoes
+                            (append lista-accoes (list (cria-accao i peca))))))))
+      (case (first (estado-pecas-por-colocar estado))
+        (i (map 'list #'accoes-validas (list peca-i0 peca-i1)))
+        (l (map 'list #'accoes-validas (list peca-l0 peca-l1 peca-l2 peca-l3)))
+        (o (map 'list #'accoes-validas (list peca-o0)))
+        (s (map 'list #'accoes-validas (list peca-s0 peca-s1)))
+        (z (map 'list #'accoes-validas (list peca-z0 peca-z1)))
+        (j (map 'list #'accoes-validas (list peca-j0 peca-j1 peca-j2 peca-j3)))
+        (t (map 'list #'accoes-validas (list peca-t0 peca-t1 peca-t2 peca-t3))))
+      lista-accoes)))
 
 ;;  resultado: estado x accao -> estado
 ;;	Esta funcao recebe um estado e uma accao, e devolve um novo estado que
 ;;  resulta de aplicar a accao recebida no estado original.
 (defun resultado (estado accao)
-  (setf (estado-pecas-colocadas estado)
-        (cons (first (estado-pecas-por-colocar estado))
-              (estado-pecas-colocadas estado)))
+  (let* ((novo-estado (copia-estado estado))
+         (letra       (first (estado-pecas-por-colocar novo-estado)))
+         (tabuleiro   (estado-tabuleiro novo-estado))
 
-  (setf (estado-pecas-por-colocar estado)
-        (rest (estado-pecas-por-colocar estado)))
+         (novas-pecas-por-colocar
+          (rest (estado-pecas-por-colocar novo-estado)))
+         (novas-pecas-colocadas
+          (cons   letra (estado-pecas-colocadas   novo-estado))))
 
-  (let* ((tabuleiro        (estado-tabuleiro estado))
-         (tabuleiro-altura (array-dimension tabuleiro 0))
-         (peca             (accao-peca accao))
-         (peca-coluna      (accao-coluna accao))
-         (linhas-completas 0))
+    (progn (setf (estado-pecas-por-colocar novo-estado) novas-pecas-por-colocar)
+           (setf (estado-pecas-colocadas   novo-estado) novas-pecas-colocadas)
+           (tabuleiro-executa-accao! tabuleiro accao)
+           (when (not (tabuleiro-topo-preenchido-p tabuleiro))
+             (let ((n-linhas-completas (tabuleiro-remove-linhas-completas! tabuleiro)))
+               (case n-linhas-completas
+                 (1 (incf (estado-pontos novo-estado) 100))
+                 (2 (incf (estado-pontos novo-estado) 300))
+                 (3 (incf (estado-pontos novo-estado) 500))
+                 (4 (incf (estado-pontos novo-estado) 800)))))
+           novo-estado)))
 
-    (dotimes (linha-tabuleiro tabuleiro-altura)
-      (if (verifica-espaco-livre tabuleiro
-                                 peca
-                                 peca-coluna
-                                 linha-tabuleiro)
-          (progn (setf (estado-tabuleiro estado)
-                       (coloca-peca tabuleiro
-                                    peca
-                                    peca-coluna
-                                    linha-tabuleiro))
-                 (setf linha-tabuleiro
-                       tabuleiro-altura))))
-
-    (if (tabuleiro-topo-preenchido-p tabuleiro)
-        (return-from resultado estado))
-
-    (dotimes (linha-tabuleiro tabuleiro-altura)
-      (if (tabuleiro-linha-completa-p tabuleiro
-                                      linha-tabuleiro)
-          (progn (incf linhas-completas)
-                 (tabuleiro-remove-linha! tabuleiro
-                                          linha-tabuleiro))))
-    (case linhas-completas
-      (1 (incf (estado-pontos estado) 100))
-      (2 (incf (estado-pontos estado) 300))
-      (3 (incf (estado-pontos estado) 500))
-      (4 (incf (estado-pontos estado) 800)))
-
-    estado))
-
-(defun verifica-espaco-livre (tabuleiro peca x y)
-  (dotimes (linha (array-dimension peca 0) T)
-    (dotimes (coluna (array-dimension peca 1))
-      (if (and (< (+ linha  y) (array-dimension tabuleiro 0))
-               (< (+ coluna x) (array-dimension tabuleiro 1))
-               (tabuleiro-preenchido-p tabuleiro (+ linha y) (+ coluna x)))
-          (return-from verifica-espaco-livre NIL)))))
-
-(defun coloca-peca (tabuleiro peca x y)
-  (dotimes (altura-peca (array-dimension peca 0) tabuleiro)
-    (dotimes (largura-peca (array-dimension peca 1))
-      (tabuleiro-preenche! tabuleiro (+ y altura-peca) (+ x largura-peca)))))
+(defun peca->letra (peca)
+  "peca->letra: peca --> simbolo
+Dada uma peca, devolve a letra que representa a peca."
+  (cond ((member peca (list peca-i0 peca-i1)                 :test #'equalp) 'i)
+        ((member peca (list peca-l0 peca-l1 peca-l2 peca-l3) :test #'equalp) 'l)
+        ((member peca (list peca-j0 peca-j1 peca-j2 peca-j3) :test #'equalp) 'j)
+        ((member peca (list peca-o0)                         :test #'equalp) 'o)
+        ((member peca (list peca-s0 peca-s1)                 :test #'equalp) 's)
+        ((member peca (list peca-z0 peca-z1)                 :test #'equalp) 'z)
+        ((member peca (list peca-t0 peca-t1 peca-t2 peca-t3) :test #'equalp) 't)))
 
 ;;	qualidade: estado -> inteiro
 ;;	Esta funcao recebe um estado e retorna um valor de quatidade que corresponde ao

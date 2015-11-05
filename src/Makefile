@@ -13,3 +13,6 @@ test: ${FINAL}
 clean:
 	rm -f ${FINAL} *.fas *.lib
 
+mooshak: ${FINAL}
+	printf '\n(load "utils.fas")\n' >> $^
+
