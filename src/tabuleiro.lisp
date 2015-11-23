@@ -147,16 +147,10 @@ laterais do tabuleiro."
          ;; 2, 3 e 4 do tabuleiro.
          (alturas-colunas (loop for c from coluna to (1- (+ coluna largura-peca))
                                 collect (tabuleiro-altura-coluna tabuleiro c)))
-         ;; Sabendo qual a coluna mais alta das colunas abrangidas pela peca, a
-         ;; linha onde a porcao inferior da peca sera colocada sera entao
-         ;; determinada por essa altura e pela posicao da parte mais baixa da
-         ;; peca correspondente a essa coluna.
-         (indice-coluna-mais-alta (max-indice  alturas-colunas))
-         (altura-coluna-mais-alta (apply #'max alturas-colunas))
-         (deslocamento            (dotimes (i altura-peca)
-                                    (when (aref peca i indice-coluna-mais-alta)
-                                      (return i))))
-         (linha                   (- altura-coluna-mais-alta deslocamento)))
+         (linha (apply #'max
+                       (mapcar #'-
+                               alturas-colunas
+                               (alturas-buracos peca)))))
     (tabuleiro-coloca-peca! tabuleiro peca linha coluna)))
 
 (defun tabuleiro-coloca-peca! (tabuleiro peca linha coluna)
@@ -182,3 +176,15 @@ Recebe uma lista e devolve o indice do elemento maximo dessa lista."
       (if (= x max)
           (return indice)
         (incf indice)))))
+
+(defun alturas-buracos (peca)
+  "altura-buracos: peca --> lista de inteiros positivos
+Dada uma peca esta funcao devolve uma lista onde o elemento de indice i da lista
+corresponde a altura da posicao preenchida na coluna i da peca com a linha mais
+baixa."
+  (let* ((largura-peca (array-dimension peca 1))
+         (alturas nil))
+    (dotimes (coluna largura-peca (reverse alturas))
+      (let ((linha 0))
+        (progn (loop while (not (aref peca linha coluna)) do (incf linha))
+               (setf alturas (cons linha alturas)))))))
