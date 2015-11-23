@@ -62,13 +62,13 @@ jogo."
          (letra       (first (estado-pecas-por-colocar novo-estado)))
          (tabuleiro   (estado-tabuleiro novo-estado))
 
-         (novas-pecas-por-colocar
-          (rest (estado-pecas-por-colocar novo-estado)))
-         (novas-pecas-colocadas
-          (cons   letra (estado-pecas-colocadas   novo-estado))))
+         (novas-pecas-por-colocar (rest (estado-pecas-por-colocar novo-estado)))
+         (novas-pecas-colocadas   (cons letra (estado-pecas-colocadas novo-estado))))
 
-    (progn (setf (estado-pecas-por-colocar novo-estado) novas-pecas-por-colocar)
-           (setf (estado-pecas-colocadas   novo-estado) novas-pecas-colocadas)
+    (progn (setf (estado-pecas-por-colocar novo-estado)
+                 novas-pecas-por-colocar)
+           (setf (estado-pecas-colocadas novo-estado)
+                 novas-pecas-colocadas)
            (tabuleiro-executa-accao! tabuleiro accao)
            (when (not (tabuleiro-topo-preenchido-p tabuleiro))
              (let ((n-linhas-completas (tabuleiro-remove-linhas-completas! tabuleiro)))
