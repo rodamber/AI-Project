@@ -1,10 +1,11 @@
-FINAL=parte_1.lisp
+FINAL=parte_2.lisp
 SRCS=tabuleiro.lisp estado.lisp accao.lisp problema.lisp
 
 all: ${FINAL}
 
 ${FINAL}: ${SRCS}
 	cat $^ > $@
+	printf '\n(load "utils.lisp")\n' >> $@
 
 test: ${FINAL}
 	cat utils.lisp $^ > tmp && mv tmp $^
@@ -12,7 +13,4 @@ test: ${FINAL}
 
 clean:
 	rm -f ${FINAL} *.fas *.lib
-
-mooshak: ${FINAL}
-	printf '\n(load "utils.fas")\n' >> $^
 
