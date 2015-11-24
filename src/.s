@@ -5,3 +5,4 @@
 (load "accao.lisp")
 (load "problema.lisp")
 (load "utils.lisp")
+(load "testes.lisp")
