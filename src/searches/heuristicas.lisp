@@ -50,11 +50,13 @@ devolve o resultado de aplicar a funcao quase heuristica ao estado recebido."
 
 (defun ~heuristica-pontuacao (estado)
   "~heuristica-pontuacao: estado --> numero"
-  (estado-pontos estado))
+  (- (+ (pontos-maximos (estado-pecas-colocadas    estado))
+        (pontos-maximos (estados-pecas-por-colocar estado)))
+     (estado-pontos estado)))
 
 (defun ~heuristica-pecas-por-colocar (estado)
   "~heuristica-pecas-por-colocar: estado --> numero"
-  (estado-pecas-por-colocar estado))
+  (list-length (estado-pecas-por-colocar estado)))
 
 (defun ~heuristica-altura-agregada (estado)
   "~heuristica-altura-agregada --> numero"
