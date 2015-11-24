@@ -111,6 +111,9 @@ por cada peca colocada"
      (estado-pontos estado)))
 
 (defun pontos-maximos (lis)
+  "pontos-maximos: lista de pecas --> inteiro
+Recebe uma lista pecas e devolve a pontuacao maxima que se pode obter com essas pecas,
+assumindo que e sempre possivel fazer o maximo de pontos por cada peca colocada."
   (let ((f (first lis))
         (r (rest  lis)))
     (cond ((equal f 'i)      (+ (pontos-maximos r) 800))
