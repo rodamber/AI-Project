@@ -38,3 +38,12 @@
     (executa-jogadas estado
                      (time (funcall funcao-procura
                                     problema)))))
+
+(defun teste-pp (numero-de-pecas)
+  (funcall #'teste #'procura-pp numero-de-pecas))
+
+(defun teste-A* (heuristica numero-de-pecas)
+  (funcall #'teste-com-heuristica
+           #'procura-A*
+           heuristica
+           numero-de-pecas))
