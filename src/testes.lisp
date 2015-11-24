@@ -13,7 +13,7 @@
                                (3 . #2A((NIL T NIL) (T T T)))
                                (6 . #2A((NIL T T) (T T NIL)))))
 
-(setq et1 (make-estado :tabuleiro (cria-tabuleiro) :pecas-por-colocar (random-pecas 30)))
+(setq et1 (make-estado :tabuleiro (cria-tabuleiro) :pecas-por-colocar (random-pecas 20)))
 
 (setq pt1
   (make-problema :estado-inicial et1
@@ -47,3 +47,11 @@
            #'procura-A*
            heuristica
            numero-de-pecas))
+
+(defun get-time (x)
+  (let ((t0 (get-universal-time)))
+    (progn
+      x
+      (- (get-universal-time)
+         t0))))
+
