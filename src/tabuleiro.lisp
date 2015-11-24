@@ -139,7 +139,6 @@ laterais do tabuleiro."
   (let* ((coluna (accao-coluna accao))
          (peca   (accao-peca   accao))
 
-         (altura-peca  (array-dimension peca 0))
          (largura-peca (array-dimension peca 1))
 
          ;; Lista com as alturas das colunas abrangidas pela peca. Por exemplo,
