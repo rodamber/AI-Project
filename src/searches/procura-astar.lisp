@@ -12,7 +12,7 @@
 			(return-from insere-lista-node (insere lista i elemento))))
 	(insere lista (list-length lista) elemento))
 
-(defun procura-astar (problema heuristica)
+(defun procura-A* (problema heuristica)
 	(let* ((estado-inicial (problema-estado-inicial problema))
 		   (open-list (list (make-node :estado estado-inicial :g 0 :h (funcall heuristica estado-inicial)))))
 
