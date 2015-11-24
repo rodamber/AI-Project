@@ -36,5 +36,3 @@
             (let ((node (make-node :antecessor (car open-list))))
                 (reverse (loop while (node-accao (node-antecessor node)) collect 
                     (progn (setf node (node-antecessor node)) (node-accao node)))))))
-
-(load "heuristicas.lisp")

@@ -1,22 +1,22 @@
 (defun heuristica-relevo (estado)
   "heuristica-relevo: estado --> numero"
-  (heuristica-auxiliar ~heuristica-relevo estado))
+  (heuristica-auxiliar #'~heuristica-relevo estado))
 
 (defun heuristica-buracos (estado)
   "heuristica-buracos: estado --> numero"
-  (heuristica-auxiliar ~heuristica-buracos estado))
+  (heuristica-auxiliar #'~heuristica-buracos estado))
 
 (defun heuristica-pontuacao (estado)
   "heuristica-pontuacao: estado --> numero"
-  (heuristica-auxiliar ~heuristica-pontuacao estado))
+  (heuristica-auxiliar #'~heuristica-pontuacao estado))
 
 (defun heuristica-pecas-por-colocar (estado)
   "heuristica-pecas-por-colocar: estado --> numero"
-  (heuristica-auxiliar ~heuristica-pecas-por-colocar estado))
+  (heuristica-auxiliar #'~heuristica-pecas-por-colocar estado))
 
 (defun heuristica-altura-agregada (estado)
   "heuristica-altura-agregada: estado --> numero"
-  (heuristica-auxiliar ~heuristica-altura-agregada estado))
+  (heuristica-auxiliar #'~heuristica-altura-agregada estado))
 
 (defun heuristica-auxiliar (~heuristica estado)
   "heuristica-auxiliar: heuristica x estado --> numero
@@ -51,7 +51,7 @@ devolve o resultado de aplicar a funcao quase heuristica ao estado recebido."
 (defun ~heuristica-pontuacao (estado)
   "~heuristica-pontuacao: estado --> numero"
   (- (+ (pontos-maximos (estado-pecas-colocadas    estado))
-        (pontos-maximos (estados-pecas-por-colocar estado)))
+        (pontos-maximos (estado-pecas-por-colocar estado)))
      (estado-pontos estado)))
 
 (defun ~heuristica-pecas-por-colocar (estado)

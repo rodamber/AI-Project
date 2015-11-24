@@ -3,6 +3,9 @@
 (load "accao.lisp")
 (load "problema.lisp")
 (load "utils.lisp")
+(load "searches/procura-pp.lisp")
+(load "searches/procura-astar.lisp")
+(load "searches/heuristicas.lisp")
 
 (defparameter lista-accoes-1 '((0 . #2A((T T T) (NIL T NIL)))
                                (1 . #2A((T) (T) (T) (T)))
@@ -18,6 +21,11 @@
                  :accoes #'accoes
                  :resultado #'resultado
                  :custo-caminho #'custo-oportunidade))
+
+(defun teste-com-heuristica (funcao-procura heuristica numero-de-pecas)
+  (labels ((procura (problema)
+             (funcall funcao-procura problema heuristica)))
+    (teste #'procura numero-de-pecas)))
 
 (defun teste (funcao-procura numero-de-pecas)
   (let* ((estado (make-estado :tabuleiro (cria-tabuleiro)
