@@ -12,3 +12,15 @@
                  :accoes #'accoes
                  :resultado #'resultado
                  :custo-caminho #'custo-oportunidade))
+
+(defun teste (funcao-procura numero-de-pecas)
+  (let* ((estado (make-estado :tabuleiro (cria-tabuleiro)
+                              :pecas-por-colocar (random-pecas numero-de-pecas)))
+         (problema (make-problema :estado-inicial estado
+                                  :solucao #'solucao
+                                  :accoes #'accoes
+                                  :resultado #'resultado
+                                  :custo-caminho #'custo-oportunidade)))
+    (executa-jogadas estado
+                     (time (funcall funcao-procura
+                                    problema)))))
