@@ -11,11 +11,11 @@
     sucessor que resulta de executar a accao recebida no estado recebido;
 - custo-caminho: funcao que dado um estado devolve o custo do caminho
     desde o estado inicial ate esse estado."
-  estado-inicial
-  solucao
-  accoes
-  resultado
-  custo-caminho)
+  (estado-inicial (make-estado))
+  (solucao #'solucao)
+  (accoes #'accoes)
+  (resultado #'resultado)
+  (custo-caminho #'custo-oportunidade))
 
 (defun solucao (estado)
   "solucao: estado -> logico

@@ -16,25 +16,25 @@
 	(let* ((estado-inicial (problema-estado-inicial problema))
 		   (open-list (list (make-node :estado estado-inicial :g 0 :h (funcall heuristica estado-inicial)))))
 
-		(loop while (problema-solucao (node-estado (car open-list))) do
+		(loop while (not (funcall (problema-solucao problema) (node-estado (car open-list)))) do
 			(let* ((node (car open-list))
 				  (estado (node-estado node))
-				  (accoes (problema-accoes estado)))
+				  (accoes (funcall (problema-accoes problema) estado)))
 				(setf open-list (cdr open-list))
 
 				(loop while accoes do
-					(let (nv-estado (resultado estado (car accoes)))
-						(if (not (tabuleiro-topo-preenchido-p (estado-tabuleiro nv-estado)))
-							(setf open-list
-								  (insere-lista-node open-list 
-													 (make-node :estado nv-estado
-													     		:g (1+ (node-g node))
-													  			:h (funcall heuristica nv-estado)
-													  			:accao (car accoes)
-													  			:antecessor node))))
+					(let ((nv-estado (funcall (problema-resultado problema) estado (car accoes))))
+						(setf open-list
+							  (insere-lista-node open-list 
+												 (make-node :estado nv-estado
+												     		:g (1+ (node-g node))
+												  			:h (funcall heuristica nv-estado)
+												  			:accao (car accoes)
+												  			:antecessor node)))
 						(setf accoes (cdr accoes))))))
 
-        (return-from procura-astar 
             (let ((node (make-node :antecessor (car open-list))))
-                (reverse (loop while (node-accao node) collect 
-                    (progn (setf node (node-antecessor node)) (node-accao node))))))))
+                (reverse (loop while (node-accao (node-antecessor node)) collect 
+                    (progn (setf node (node-antecessor node)) (node-accao node)))))))
+
+(load "heuristicas.lisp")
