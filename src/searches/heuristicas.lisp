@@ -22,6 +22,12 @@
       0
       (~heuristica-pecas-por-colocar estado)))
 
+(defun heuristica-altura-agregada (estado)
+  "heuristica-altura-agregada: estado --> numero"
+  (if (solucao estado)
+      0
+      (~heuristica-altura-agregada estado)))
+
 ;-------------------------------------------------------------------------------
 
 (defun ~heuristica-relevo (estado)
@@ -35,6 +41,7 @@
     relevo))
 
 (defun ~heuristica-buracos (estado)
+  "~heuristica-buracos: estado --> numero"
   (let ((buracos 0)
         (tabuleiro (estado-tabuleiro estado)))
     (dotimes (coluna 10 buracos)
@@ -43,8 +50,19 @@
                                       coluna)))))
 
 (defun ~heuristica-pontuacao (estado)
+  "~heuristica-pontuacao: estado --> numero"
   (estado-pontos estado))
 
 (defun ~heuristica-pecas-por-colocar (estado)
+  "~heuristica-pecas-por-colocar: estado --> numero"
   (estado-pecas-por-colocar estado))
+
+(defun ~heuristica-altura-agregada (estado)
+  "~heuristica-altura-agregada --> numero"
+  (let ((tabuleiro (estado-tabuleiro estado))
+        (altura-agregada 0))
+    (dotimes (coluna 10 altura-agregada)
+      (incf altura-agregada
+            (tabuleiro-altura-coluna tabuleiro
+                                     coluna)))))
 
