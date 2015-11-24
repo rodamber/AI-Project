@@ -1,3 +1,9 @@
+(load "tabuleiro.lisp")
+(load "estado.lisp")
+(load "accao.lisp")
+(load "problema.lisp")
+(load "utils.lisp")
+
 (defparameter lista-accoes-1 '((0 . #2A((T T T) (NIL T NIL)))
                                (1 . #2A((T) (T) (T) (T)))
                                (1 . #2A((NIL NIL T) (T T T)))
