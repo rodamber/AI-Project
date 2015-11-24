@@ -1,32 +1,31 @@
 (defun heuristica-relevo (estado)
   "heuristica-relevo: estado --> numero"
-  (if (solucao estado)
-      0
-      (~heuristica-relevo estado)))
+  (heuristica-auxiliar ~heuristica-relevo estado))
 
 (defun heuristica-buracos (estado)
   "heuristica-buracos: estado --> numero"
-  (if (solucao estado)
-      0
-      (~heuristica-buracos estado)))
+  (heuristica-auxiliar ~heuristica-buracos estado))
 
 (defun heuristica-pontuacao (estado)
   "heuristica-pontuacao: estado --> numero"
-  (if (solucao estado)
-      0
-      (~heuristica-pontuacao estado)))
+  (heuristica-auxiliar ~heuristica-pontuacao estado))
 
 (defun heuristica-pecas-por-colocar (estado)
   "heuristica-pecas-por-colocar: estado --> numero"
-  (if (solucao estado)
-      0
-      (~heuristica-pecas-por-colocar estado)))
+  (heuristica-auxiliar ~heuristica-pecas-por-colocar estado))
 
 (defun heuristica-altura-agregada (estado)
   "heuristica-altura-agregada: estado --> numero"
+  (heuristica-auxiliar ~heuristica-altura-agregada estado))
+
+(defun heuristica-auxiliar (~heuristica estado)
+  "heuristica-auxiliar: heuristica x estado --> numero
+Recebe uma funcao quase heuristica (que nao devolve 0 para um estado solucao) e
+um estado. Devolve 0 caso o estado seja um estado solucao. Caso contrario,
+devolve o resultado de aplicar a funcao quase heuristica ao estado recebido."
   (if (solucao estado)
       0
-      (~heuristica-altura-agregada estado)))
+      (funcall ~heuristica estado)))
 
 ;-------------------------------------------------------------------------------
 
