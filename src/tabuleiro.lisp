@@ -150,7 +150,7 @@ laterais do tabuleiro."
          (linha (apply #'max
                        (mapcar #'-
                                alturas-colunas
-                               (alturas-buracos peca)))))
+                               (peca-alturas-buracos peca)))))
     (tabuleiro-coloca-peca! tabuleiro peca linha coluna)))
 
 (defun tabuleiro-coloca-peca! (tabuleiro peca linha coluna)
@@ -167,6 +167,16 @@ valido colocar a peca na posicao pretendida."
                                (+ linha  i)
                                (+ coluna j)))))))
 
+(defun tabuleiro-coluna-buracos (tabuleiro coluna)
+  "tabuleiro-coluna-buracos: tabuleiro x inteiro --> inteiro
+Recebe um tabuleiro e um inteiro que representa a coluna escolhida e devolve o
+numero de posicoes nao preenchidas abaixo da altura dessa coluna."
+  (let ((altura (tabuleiro-altura-coluna tabuleiro coluna))
+        (buracos 0))
+    (dotimes (linha altura buracos)
+      (when (not (tabuleiro-preenchido-p tabuleiro linha coluna))
+        (incf buracos)))))
+
 (defun max-indice (lista)
   "max-indice: lista --> inteiro
 Recebe uma lista e devolve o indice do elemento maximo dessa lista."
@@ -175,9 +185,9 @@ Recebe uma lista e devolve o indice do elemento maximo dessa lista."
     (dolist (x lista)
       (if (= x max)
           (return indice)
-        (incf indice)))))
+          (incf indice)))))
 
-(defun alturas-buracos (peca)
+(defun peca-alturas-buracos (peca)
   "altura-buracos: peca --> lista de inteiros positivos
 Dada uma peca esta funcao devolve uma lista onde o elemento de indice i da lista
 corresponde a altura da posicao preenchida na coluna i da peca com a linha mais
