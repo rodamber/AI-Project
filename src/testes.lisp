@@ -13,7 +13,7 @@
                                (3 . #2A((NIL T NIL) (T T T)))
                                (6 . #2A((NIL T T) (T T NIL)))))
 
-(setq et1 (make-estado :tabuleiro (cria-tabuleiro) :pecas-por-colocar (random-pecas 20)))
+(setq et1 (make-estado :tabuleiro (cria-tabuleiro) :pecas-por-colocar (random-pecas 25)))
 
 (setq pt1
   (make-problema :estado-inicial et1
@@ -49,9 +49,19 @@
            numero-de-pecas))
 
 (defun get-time (x)
-  (let ((t0 (get-universal-time)))
+  (let ((t0 (get-internal-run-time)))
     (progn
       x
-      (- (get-universal-time)
+      (- (get-internal-run-time)
          t0))))
+
+(defun time-mean (form times)
+  (float (apply #'mean
+                (loop for i from 0 to times
+                      collect (get-time form)))))
+
+(defun mean (&rest sequence)
+  (if (null sequence)
+      nil
+      (/ (reduce #'+ sequence) (length sequence))))
 
