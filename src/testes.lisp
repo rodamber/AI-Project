@@ -57,7 +57,7 @@
 
 (defun time-mean (form times)
   (float (apply #'mean
-                (loop for i from 0 to times
+                (loop for i from 1 upto times
                       collect (get-time form)))))
 
 (defun mean (&rest sequence)
