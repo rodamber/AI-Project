@@ -9,8 +9,7 @@
            "procura-pp-recursivo: estado --> lista de accoes"
            (let ((lista-accoes (reverse (funcall accoes estado))))
              (if (null lista-accoes)
-                 (return-from procura-pp-recursivo
-                   nil)
+                 nil
                  ;; Para cada accao possivel, por ordem LIFO, expande o
                  ;; estado e verifica se e solucao na geracao. Se for
                  ;; solucao devolve uma lista com a accao que a originou; se
