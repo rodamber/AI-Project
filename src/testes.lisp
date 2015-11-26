@@ -5,60 +5,80 @@
 (load "utils.lisp")
 (load "searches/procura-pp.lisp")
 (load "searches/procura-astar.lisp")
+(load "searches/procura-best.lisp")
 (load "searches/heuristicas.lisp")
 
-(defparameter lista-accoes-1 '((0 . #2A((T T T) (NIL T NIL)))
-                               (1 . #2A((T) (T) (T) (T)))
-                               (1 . #2A((NIL NIL T) (T T T)))
-                               (3 . #2A((NIL T NIL) (T T T)))
-                               (6 . #2A((NIL T T) (T T NIL)))))
+;;;-----------------------------------------------------------------------------
+;;; Funcoes de teste de execucao das procuras
 
-(setq et1 (make-estado :tabuleiro (cria-tabuleiro) :pecas-por-colocar (random-pecas 25)))
+(defun problema-random (numero-de-pecas)
+  (let ((estado (make-estado :pecas-por-colocar (random-pecas numero-de-pecas)
+                             :tabuleiro         (cria-tabuleiro))))
+    (make-problema :estado-inicial estado)))
 
-(setq pt1
-  (make-problema :estado-inicial et1
-                 :solucao #'solucao
-                 :accoes #'accoes
-                 :resultado #'resultado
-                 :custo-caminho #'custo-oportunidade))
+(defun pontuacao (procura numero-de-pecas)
+  (let* ((problema        (problema-random numero-de-pecas))
+         (estado          (problema-estado-inicial problema))
+         (lista-de-accoes (time (funcall procura problema)))
+         (resultado       (problema-resultado problema)))
+    (dolist (accao lista-de-accoes)
+      (setf estado
+            (funcall resultado
+                     estado
+                     accao)))
+    (estado-pontos estado)))
 
-(defun teste-com-heuristica (funcao-procura heuristica numero-de-pecas)
-  (labels ((procura (problema)
-             (funcall funcao-procura problema heuristica)))
-    (teste #'procura numero-de-pecas)))
+(defun pontuacao-pp (numero-de-pecas)
+  (pontuacao #'procura-pp numero-de-pecas))
 
-(defun teste (funcao-procura numero-de-pecas)
-  (let* ((estado (make-estado :tabuleiro (cria-tabuleiro)
-                              :pecas-por-colocar (random-pecas numero-de-pecas)))
-         (problema (make-problema :estado-inicial estado
-                                  :solucao #'solucao
-                                  :accoes #'accoes
-                                  :resultado #'resultado
-                                  :custo-caminho #'custo-oportunidade)))
+(defun pontuacao-A* (heuristica numero-de-pecas)
+  (labels
+      ((procura (problema)
+         (funcall #'procura-A* problema heuristica)))
+    (pontuacao #'procura numero-de-pecas)))
+
+(defun pontuacao-best (numero-de-pecas)
+  (pontuacao #'procura-best numero-de-pecas))
+
+(defun executa-com-heuristica (funcao-procura heuristica numero-de-pecas)
+  (labels
+      ((procura (problema)
+         (funcall funcao-procura problema heuristica)))
+    (executa #'procura numero-de-pecas)))
+
+(defun executa (funcao-procura numero-de-pecas)
+  (let* ((problema (problema-random numero-de-pecas))
+         (estado   (problema-estado-inicial problema)))
     (executa-jogadas estado
                      (time (funcall funcao-procura
                                     problema)))))
 
-(defun teste-pp (numero-de-pecas)
-  (funcall #'teste #'procura-pp numero-de-pecas))
+(defun executa-pp (numero-de-pecas)
+  (funcall #'executa #'procura-pp numero-de-pecas))
 
-(defun teste-A* (heuristica numero-de-pecas)
-  (funcall #'teste-com-heuristica
-           #'procura-A*
-           heuristica
-           numero-de-pecas))
+(defun executa-A* (heuristica numero-de-pecas)
+  (executa-com-heuristica #'procura-A* heuristica numero-de-pecas))
 
-(defun get-time (x)
-  (let ((t0 (get-internal-run-time)))
-    (progn
-      x
-      (- (get-internal-run-time)
-         t0))))
+(defun executa-best (numero-de-pecas)
+  (funcall #'executa #'procura-best-problema numero-de-pecas))
 
+;;;-----------------------------------------------------------------------------
+;;; Profiling
+
+(defmacro get-time (&body forms)
+  (let ((run1 (gensym))
+        (run2 (gensym))
+        (result (gensym)))
+    `(let* ((,run1 (get-internal-run-time))
+            (,result (progn ,@forms))
+            (,run2 (get-internal-run-time)))
+       (float (/ (- ,run2 ,run1) internal-time-units-per-second)))))
+
+;; Doesn't seem to work...
 (defun time-mean (form times)
-  (float (apply #'mean
-                (loop for i from 1 upto times
-                      collect (get-time form)))))
+  (apply #'mean
+         (loop for i from 1 upto times
+               collect (get-time form))))
 
 (defun mean (&rest sequence)
   (if (null sequence)
