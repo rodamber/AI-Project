@@ -39,3 +39,5 @@
 			(setf melhores-aux (rest melhores-aux)))
 		melhores)
 	   (melhores-aux))))
+
+
