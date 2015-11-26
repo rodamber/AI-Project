@@ -1,4 +1,4 @@
-(defconstant percentagem-selecao 100)
+(defconstant percentagem-selecao 30)
 (defconstant probabilidade-mutacao 10)
 
 (defstruct problemaGen
@@ -39,7 +39,7 @@
 "fitness: problemaGen x lista de probabilidades de selecao -> lista de estadosGen selecionados"
     (let ((populacao (problemaGen-populacao problemaGen))
           (lista-selection '())
-          (random-max (* 25 (problemaGen-populacao-dim problemaGen))))
+          (random-max (* 50 (problemaGen-populacao-dim problemaGen))))
 
         (loop while (null lista-selection) do
             (dotimes (i (problemaGen-populacao-dim problemaGen) lista-selection)
@@ -47,7 +47,7 @@
                 ;; decide se seleciona o estadoGen ou nao dependendo de uma constante aleatoria e
                 ;; uma constante a multiplicar pelo valor de fitness do estadoGen
                 (if (< (- 100 percentagem-selecao)
-                       (+ (random random-max) (* (nth i lista-fitness) (random random-max))))
+                       (+ (random 50) (* (nth i lista-fitness) (random random-max))))
                     (setf lista-selection (append lista-selection (list (nth i populacao)))))))
         lista-selection))
 
