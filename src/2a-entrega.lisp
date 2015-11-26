@@ -316,7 +316,9 @@ jogo."
                      (dotimes (i colunas-validas)
                        (setf lista-accoes
                              (append lista-accoes
-                                     (list (cria-accao i
+                                     (list 
+    algoritmo
+    algoritmo(cria-accao i
                                                        peca))))))))
           (case (first (estado-pecas-por-colocar estado))
             (i (map 'list #'accoes-validas (list peca-i0 peca-i1)))
@@ -341,7 +343,9 @@ resulta de aplicar a accao recebida no estado original."
 
     (progn (setf (estado-pecas-por-colocar novo-estado)
                  novas-pecas-por-colocar)
-           (setf (estado-pecas-colocadas novo-estado)
+           (setf (estado-pecas-colocadas no
+    algoritmo
+    algoritmovo-estado)
                  novas-pecas-colocadas)
            (tabuleiro-executa-accao! tabuleiro accao)
            (when (not (tabuleiro-topo-preenchido-p tabuleiro))
