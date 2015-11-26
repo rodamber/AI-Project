@@ -67,11 +67,12 @@ devolve o resultado de aplicar a funcao quase heuristica ao estado recebido."
             (tabuleiro-altura-coluna tabuleiro
                                      coluna)))))
 
-(defun h-rbppa (estado)
+(defun heuristica-arpb (estado)
   (labels
       ((~h (estado)
-         (+ (funcall #'~heuristica-altura-agregada   estado)
-            (funcall #'~heuristica-pecas-por-colocar estado)
-            (funcall #'~heuristica-pontuacao         estado)
-            (funcall #'~heuristica-buracos           estado))))
+         (* 1000
+            (+ (funcall #'~heuristica-altura-agregada estado)
+               (funcall #'~heuristica-relevo          estado)
+               (funcall #'~heuristica-pontuacao       estado)
+               (funcall #'~heuristica-buracos         estado)))))
     (funcall #'heuristica-auxiliar #'~h estado)))
