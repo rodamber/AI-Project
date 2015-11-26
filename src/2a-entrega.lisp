@@ -457,7 +457,7 @@ devolve o resultado de aplicar a funcao quase heuristica ao estado recebido."
   recompensa pela altura ser um multiplo de 4"
   (let* ((tabuleiro (estado-tabuleiro estado))
         (altura-max (apply #'max (loop for c from 0 to 9 collect (tabuleiro-altura-coluna tabuleiro c)))))
-    (mod altura-max 4))))
+    (mod altura-max 4)))
 
 (defun ~heuristica-buracos (estado)
   "~heuristica-buracos: estado --> numero"
