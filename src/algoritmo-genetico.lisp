@@ -185,7 +185,7 @@
                 (loop while (>= j 10) do
                     (let (str (sum 0))
                         (dotimes (k 100) (incf sum (algoritmo-genetico #'procura-demorada i j #'heuristica-pontuacao #'heuristica-pecas-por-colocar #'heuristica-relevo #'heuristica-altura-4 #'heuristica-altura-modulo-4)))
-                        (setf sum (/ sum 30.0))
+                        (setf sum (/ sum 100.0))
                         (setf str (format nil "tamanho-populacao: ~D || numero-testes: ~D || numero-geracoes-media: ~D" i j sum))
                         (print str)
                         (push str l))
