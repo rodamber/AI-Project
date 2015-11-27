@@ -1,5 +1,6 @@
 (defconstant percentagem-selecao 30)
 (defconstant probabilidade-mutacao 10)
+(defconstant 30-segundos-clocks (* internal-time-units-per-second 30))
 
 (defstruct problemaGen
 "ProblemGen
@@ -11,10 +12,11 @@
   - heuristicas: lista de heuristicas que estao a ser avaliadas no problema genetico"
     (populacao (list (make-estadoGen :constantes '(1 0 0) :resultado 10) (make-estadoGen :constantes '(0 1 0) :resultado 20) (make-estadoGen :constantes '(0 0 1) :resultado 30)))
     (populacao-dim 3)
-    listas-pecas
-    listas-tabuleiros
+    lista-testes
     algoritmo
     (heuristicas '(1 2 3)))
+
+(defstruct teste lista-pecas tabuleiro)
 
 (defstruct estadoGen
 "EstadoGen
@@ -55,7 +57,7 @@
 
 
 (defun crossover (problemaGen lista-selection)
-"crossover: problemaGen x lista de estadosGen selecionados -> lista com nova populacao"
+"crossover: problemaGen x lista de estadosGen selecionados -> problemaGen com nova populacao"
     (let ((nv-populacao '())
           (lista-selection-dim (list-length lista-selection))
           (n-heuristicas (list-length (problemaGen-heuristicas problemaGen))))  
@@ -118,22 +120,39 @@
 (defun cria-nova-geracao (problemaGen)
   (normalize (mutation (crossover problemaGen (selection problemaGen (fitness problemaGen))))))
 
-(defun algoritmo-genetico (algoritmo tamanho-populacao numero-testes numero-pecas &rest heuristicas)
+(defun algoritmo-genetico (algoritmo tamanho-populacao numero-testes &rest heuristicas)
     (let* ((n-heuristicas (list-length heuristicas))
            (populacao 
                 (cria-lista tamanho-populacao #'(lambda () (make-estadoGen :constantes 
                     (cria-lista n-heuristicas #'(lambda () (random 100)))))))
-           (lista-pecas (cria-lista numero-testes #'(lambda () (random-pecas (random numero-pecas)))))
+           (lista-testes (cria-lista numero-testes
+                #'(lambda () (make-teste :tabuleiro (cria-tabuleiro-aleatorio)
+                                         :lista-pecas (random-pecas (+ 4 (random 3)))))))
            (problemaGen (normalize (make-problemaGen :populacao populacao
                                                      :populacao-dim tamanho-populacao
-                                                     :lista-pecas lista-pecas
+                                                     :lista-testes lista-testes
                                                      :algoritmo algoritmo
-                                                     :heuristicas heuristicas))))))
+                                                     :heuristicas heuristicas))))
 
+    (dolist (estado (problemaGen-populacao problemaGen))        
+        (dolist (teste (problemaGen-lista-testes problemaGen))
+            (let* ((problema (make-problema
+                    :estado-inicial (make-estado :tabuleiro (teste-tabuleiro teste)
+                                                 :pecas-por-colocar (teste-lista-pecas teste))))
+                  (heuristica #'(lambda (e) (apply #'+ 
+                               (mapcar #'(lambda (c h) (* c (funcall h e))) 
+                                       (estadoGen-constantes estado)
+                                       (problemaGen-heuristicas problemaGen)))))
+                  (tempo-comeco (get-internal-run-time))
+                  (pontuacao (funcall algoritmo problema heuristica)))
+
+                (push (/ pontuacao 10) (estadoGen-resultado estado)))))
+
+    problemaGen))
 
 
 (defun cria-lista (n elemento)
-    (let ((lista-constantes nil))
+    (let ((lista nil))
         (dotimes (i n)
-            (push (funcall elemento) lista-constantes))
-        lista-pecas))
+            (push (funcall elemento) lista))
+        lista))
