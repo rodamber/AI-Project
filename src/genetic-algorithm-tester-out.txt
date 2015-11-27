@@ -1,0 +1,39 @@
+  "tamanho-populacao: 10 || numero-testes: 10 || numero-geracoes-media: 1101.8003"
+  "tamanho-populacao: 10 || numero-testes: 20 || numero-geracoes-media: 1437.2"
+  "tamanho-populacao: 10 || numero-testes: 30 || numero-geracoes-media: 1229.134"
+  
+  "tamanho-populacao: 20 || numero-testes: 10 || numero-geracoes-media: 426.5668"
+  "tamanho-populacao: 20 || numero-testes: 20 || numero-geracoes-media: 488.2334"
+  "tamanho-populacao: 20 || numero-testes: 30 || numero-geracoes-media: 447.0334"
+
+  "tamanho-populacao: 30 || numero-testes: 10 || numero-geracoes-media: 274.2334"
+  "tamanho-populacao: 30 || numero-testes: 20 || numero-geracoes-media: 282.3667"
+  "tamanho-populacao: 30 || numero-testes: 30 || numero-geracoes-media: 245.60004"
+
+  "tamanho-populacao: 40 || numero-testes: 10 || numero-geracoes-media: 206.60004"
+  "tamanho-populacao: 40 || numero-testes: 20 || numero-geracoes-media: 215.3667"
+  "tamanho-populacao: 40 || numero-testes: 30 || numero-geracoes-media: 185.9"
+
+  "tamanho-populacao: 50 || numero-testes: 10 || numero-geracoes-media: 149.93335"
+  "tamanho-populacao: 50 || numero-testes: 20 || numero-geracoes-media: 150.3667"
+  "tamanho-populacao: 50 || numero-testes: 30 || numero-geracoes-media: 153.30002"
+
+  "tamanho-populacao: 60 || numero-testes: 10 || numero-geracoes-media: 119.33334"
+  "tamanho-populacao: 60 || numero-testes: 20 || numero-geracoes-media: 127.46667"
+  "tamanho-populacao: 60 || numero-testes: 30 || numero-geracoes-media: 117.06668"
+
+  "tamanho-populacao: 70 || numero-testes: 10 || numero-geracoes-media: 103.3667"
+  "tamanho-populacao: 70 || numero-testes: 20 || numero-geracoes-media: 109.1667"
+  "tamanho-populacao: 70 || numero-testes: 30 || numero-geracoes-media: 105.46667"
+
+  "tamanho-populacao: 80 || numero-testes: 10 || numero-geracoes-media: 109.03336"
+  "tamanho-populacao: 80 || numero-testes: 20 || numero-geracoes-media: 96.73334"
+  "tamanho-populacao: 80 || numero-testes: 30 || numero-geracoes-media: 104.50003"
+
+  "tamanho-populacao: 90 || numero-testes: 10 || numero-geracoes-media: 71.6"
+  "tamanho-populacao: 90 || numero-testes: 20 || numero-geracoes-media: 86.96667"
+  "tamanho-populacao: 90 || numero-testes: 30 || numero-geracoes-media: 82.63336"
+
+ "tamanho-populacao: 100 || numero-testes: 10 || numero-geracoes-media: 57.00002"
+ "tamanho-populacao: 100 || numero-testes: 20 || numero-geracoes-media: 63.53334"
+ "tamanho-populacao: 100 || numero-testes: 30 || numero-geracoes-media: 63.40001"
