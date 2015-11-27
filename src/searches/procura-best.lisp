@@ -15,14 +15,20 @@
       fronteira
       (subseq fronteira 0 n)))
 
+(defun funcao-avaliacao (estado)
+  (+ (* 00 (funcall #'custo-altura-agregada estado))
+     (* 10 (funcall #'custo-oportunidade    estado))
+     (* 00 (funcall #'custo-relevo          estado))
+     (* 00 (funcall #'custo-buracos         estado))
+     (* 10 (funcall #'heuristica-pontuacao  estado))))
+
 (defun procura-best-problema (problema)
   "procura-best-problema: problema --> lista de accoes"
   (let* ((estado-inicial (problema-estado-inicial problema))
          (solucao        (problema-solucao        problema))
          (accoes         (problema-accoes         problema))
          (resultado      (problema-resultado      problema))
-         (g              (problema-custo-caminho  problema))
-         (h #'heuristica-arpb)
+         (f              #'funcao-avaliacao)
          (fronteira (list (make-no :estado          estado-inicial
                                    :avaliacao       0
                                    :caminho nil))))
@@ -43,12 +49,14 @@
                    (dolist (accao lista-accoes)
                      (let* ((novo-estado (funcall resultado estado accao))
                             (novo-no (make-no :estado novo-estado
-                                              :avaliacao (+ (funcall g novo-estado)
-                                                            (funcall h novo-estado))
+                                              :avaliacao (funcall f novo-estado)
                                               :caminho (cons accao
                                                              (no-caminho no)))))
                        ;; Insere o no na fronteira.
                        (setf fronteira
-                             (merge 'list (list novo-no) fronteira #'no<)))))))))
+                             (merge 'list
+                                    (list novo-no)
+                                    fronteira
+                                    #'no<)))))))))
       (setf fronteira
-            (poda fronteira 5)))))
+            (poda fronteira 1000)))))
