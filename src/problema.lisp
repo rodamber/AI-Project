@@ -85,20 +85,9 @@ resulta de aplicar a accao recebida no estado original."
                  (4 (incf (estado-pontos novo-estado) 800)))))
            novo-estado)))
 
-(defun peca->letra (peca)
-  "peca->letra: peca --> simbolo
-Dada uma peca, devolve a letra que representa a peca."
-  (cond ((member peca (list peca-i0 peca-i1)                 :test #'equalp) 'i)
-        ((member peca (list peca-l0 peca-l1 peca-l2 peca-l3) :test #'equalp) 'l)
-        ((member peca (list peca-j0 peca-j1 peca-j2 peca-j3) :test #'equalp) 'j)
-        ((member peca (list peca-o0)                         :test #'equalp) 'o)
-        ((member peca (list peca-s0 peca-s1)                 :test #'equalp) 's)
-        ((member peca (list peca-z0 peca-z1)                 :test #'equalp) 'z)
-        ((member peca (list peca-t0 peca-t1 peca-t2 peca-t3) :test #'equalp) 't)))
-
 (defun qualidade (estado)
   "qualidade: estado -> inteiro
-Esta funcao recebe um estado e retorna um valor de quatidade que corresponde ao
+Esta funcao recebe um estado e retorna um valor de qualidade que corresponde ao
 valor negativo dos pontos ganhos ate ao momento."
   (* -1 (estado-pontos estado)))
 

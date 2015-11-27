@@ -1,3 +1,10 @@
+;; LEIC-A
+;; Grupo 48
+;; 78941 - Micael Batista
+;; 78942 - Rodrigo Bernardo
+;; 78960 - Francisco Besteiro
+
+
 ;;; Implementacao do tipo tabuleiro
 ;;; Este e representado atraves de um array 2D, para ter acesso O(1) a cada
 ;;; posicao do tabuleiro.
@@ -34,7 +41,7 @@ preenchida, e NIL caso contrario."
   "tabuleiro-altura-coluna: tabuleiro x inteiro --> inteiro
 Recebe um tabuleiro e coluna, e devolve a posicao mais alta dessa coluna que
 esteja preenchida."
-  (let ((numero-de-linhas (array-dimension tabuleiro 0)))
+  (let ((numero-de-linhas 18))
     (loop for linha from (1- numero-de-linhas) downto 0
           do (when (tabuleiro-preenchido-p tabuleiro linha coluna)
                (return-from tabuleiro-altura-coluna (1+ linha))))
@@ -44,7 +51,7 @@ esteja preenchida."
   "tabuleiro-linha-completa-p: tabuleiro x inteiro --> logico
 Recebe um tabuleiro e linha, e devolve T se todas as posicoes dessa linha
 estiverem preenchidas, e NIL caso contrario."
-  (let ((numero-de-colunas (array-dimension tabuleiro 1)))
+  (let ((numero-de-colunas 10))
     (dotimes (coluna numero-de-colunas t)
       (when (not (tabuleiro-preenchido-p tabuleiro linha coluna))
         (return nil)))))
@@ -57,9 +64,9 @@ e de coluna recebidos nao forem validos (i.e. nao estiverem entre 0 e 17, e 0 e
 9), nada e feito. O valor devolvido por esta funcao nao esta definido"
   (when (and (>= linha  0)
              (>= coluna 0)
-             (< linha  (array-dimension tabuleiro 0))
-             (< coluna (array-dimension tabuleiro 1))
-             (setf (aref tabuleiro linha coluna) t))))
+             (< linha  18)
+             (< coluna 10))
+    (setf (aref tabuleiro linha coluna) t)))
 
 (defun tabuleiro-remove-linha! (tabuleiro linha)
   "tabuleiro-remove-linha!: tabuleiro x inteiro --> {}
@@ -67,20 +74,20 @@ Recebe um tabuleiro e linha, e altera o tabuleiro recebido removendo essa linha
 do tabuleiro, fazendo com que as linhas por cima da linha removida descam uma
 linha. As linhas que estao por baixo da linha removida nao podem ser alteradas.
 O valor devolvido por esta funcao nao esta definido."
-  (let ((numero-de-linhas (array-dimension tabuleiro 0)))
+  (let ((numero-de-linhas 18))
     (loop for i from linha to (- numero-de-linhas 2) do
       ;; Trocam-se as linhas de modo a que a linha a ser removida se encontre no
       ;; topo do tabuleiro no final do ciclo e que as suas superiores descam uma
       ;; linha. Se a linha for a do topo, nao ha necessidade de fazer trocas.
       (tabuleiro-troca-linhas! tabuleiro i (1+ i)))
-    (dotimes (i (array-dimension tabuleiro 1))
+    (dotimes (i 10)
       ;; No final, "remove-se" a linha do topo.
       (setf (aref tabuleiro (1- numero-de-linhas) i) nil))))
 
 (defun tabuleiro-troca-linhas! (tabuleiro linha-1 linha-2)
   "tabuleiro-troca-linhas!: tabuleiro x inteiro x inteiro --> tabuleiro
 Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
-  (dotimes (i (array-dimension tabuleiro 1))
+  (dotimes (i 10)
     (let ((x (aref tabuleiro linha-1 i))
           (y (aref tabuleiro linha-2 i)))
       (setf (aref tabuleiro linha-1 i) y)
@@ -90,7 +97,7 @@ Recebe um tabuleiro e duas linhas e troca os conteudos dessas linhas."
   "tabuleiro-remove-linhas-completas!: tabuleiro --> inteiro 
 Remove todas as linhas do tabuleiro que estejam completas. Devolve o numero de
 linhas removidas."
-  (let ((numero-de-linhas (array-dimension tabuleiro 0))
+  (let ((numero-de-linhas 18)
         (linhas-removidas 0))
     (loop for linha from (1- numero-de-linhas) downto 0 do
       (when (tabuleiro-linha-completa-p tabuleiro linha)
@@ -102,8 +109,8 @@ linhas removidas."
   "tabuleiro-topo-preenchido-p: tabuleiro --> logico
 Recebe um tabuleiro e devolve T se existir alguma posicao na linha do topo do
 tabuleiro que esteja preenchida, e NIL caso contrario."
-  (let ((numero-de-linhas  (array-dimension tabuleiro 0))
-        (numero-de-colunas (array-dimension tabuleiro 1)))
+  (let ((numero-de-linhas  18)
+        (numero-de-colunas 10))
     (dotimes (coluna numero-de-colunas nil)
       (when (tabuleiro-preenchido-p tabuleiro (1- numero-de-linhas) coluna)
         (return t)))))

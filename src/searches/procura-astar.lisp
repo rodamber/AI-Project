@@ -26,14 +26,14 @@ for menor que a do segundo."
                                    :avaliacao       0
                                    :caminho nil))))
     (loop do
-      (let* ((no     (pop fronteira))
-             (estado (no-estado no)))
+      (let ((no (pop fronteira)))
         (cond ((null no) (return nil))
               ((funcall solucao (no-estado no)) (return (reverse (no-caminho no))))
               (t
                ;; Expande o no e adiciona os nos resultantes a fronteira
                ;; ordenados pela funcao de avaliacao f(n) = g(n) + h(n).
-               (let ((lista-accoes (funcall accoes estado)))
+               (let* ((estado (no-estado no))
+                      (lista-accoes (funcall accoes estado)))
                  (dolist (accao lista-accoes)
                    (let* ((novo-estado (funcall resultado estado accao))
                           (novo-no (make-no :estado novo-estado
@@ -41,7 +41,9 @@ for menor que a do segundo."
                                                           (funcall h novo-estado))
                                             :caminho (cons accao
                                                            (no-caminho no)))))
-                     ;; Insere o no na fronteira.
                      (setf fronteira
-                           (merge 'list (list novo-no) fronteira #'no<)))))))))))
+                           (merge 'list
+                                  (list novo-no)
+                                  fronteira
+                                  #'no<)))))))))))
 
