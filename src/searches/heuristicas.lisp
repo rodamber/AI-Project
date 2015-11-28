@@ -1,12 +1,11 @@
-(defun custo-relevo (estado)
-  "custo-relevo: estado --> numero"
-  (let ((relevo 0)
-        (tabuleiro (estado-tabuleiro estado)))
-    (loop for coluna from 1 upto 9 do
-      (let ((a1 (tabuleiro-altura-coluna tabuleiro coluna))
-            (a2 (tabuleiro-altura-coluna tabuleiro (1- coluna))))
-        (incf relevo (abs (- a1 a2)))))
-    relevo))
+(defun custo-altura-agregada (estado)
+  "custo-altura-agregada --> numero"
+  (let ((tabuleiro (estado-tabuleiro estado))
+        (altura-agregada 0))
+    (dotimes (coluna 10 altura-agregada)
+      (incf altura-agregada
+            (tabuleiro-altura-coluna tabuleiro
+                                     coluna)))))
 
 (defun custo-buracos (estado)
   "custo-buracos: estado --> numero"
@@ -21,18 +20,24 @@
   "custo-pecas-por-colocar: estado --> numero"
   (list-length (estado-pecas-colocadas estado)))
 
-(defun custo-altura-agregada (estado)
-  "custo-altura-agregada --> numero"
-  (let ((tabuleiro (estado-tabuleiro estado))
-        (altura-agregada 0))
-    (dotimes (coluna 10 altura-agregada)
-      (incf altura-agregada
-            (tabuleiro-altura-coluna tabuleiro
-                                     coluna)))))
+(defun custo-relevo (estado)
+  "custo-relevo: estado --> numero"
+  (let ((relevo 0)
+        (tabuleiro (estado-tabuleiro estado)))
+    (loop for coluna from 1 upto 9 do
+      (let ((a1 (tabuleiro-altura-coluna tabuleiro coluna))
+            (a2 (tabuleiro-altura-coluna tabuleiro (1- coluna))))
+        (incf relevo (abs (- a1 a2)))))
+    relevo))
 
 (defun heuristica-pontuacao (estado)
   "heuristica-pontuacao: estado --> numero"
   (- (+ (pontos-maximos (estado-pecas-colocadas    estado))
         (pontos-maximos (estado-pecas-por-colocar estado)))
      (estado-pontos estado)))
+
+(defun heuristica-altura (estado)
+  (let* ((tabuleiro (estado-tabuleiro estado))
+         (alturas-colunas (loop for c from 0 to 9 collect (tabuleiro-altura-coluna tabuleiro c))))
+    (apply #'max alturas-colunas)))
 

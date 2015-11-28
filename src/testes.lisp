@@ -8,62 +8,58 @@
 (load "searches/procura-best.lisp")
 (load "searches/heuristicas.lisp")
 
-;;;-----------------------------------------------------------------------------
-;;; Funcoes de teste de execucao das procuras
-
 (defun problema-random (numero-de-pecas)
   (let ((estado (make-estado :pecas-por-colocar (random-pecas numero-de-pecas)
                              :tabuleiro         (cria-tabuleiro))))
     (make-problema :estado-inicial estado)))
 
-(defun pontuacao (procura numero-de-pecas)
-  (let* ((problema        (problema-random numero-de-pecas))
-         (estado          (problema-estado-inicial problema))
-         (lista-de-accoes (time (funcall procura problema)))
-         (resultado       (problema-resultado problema)))
-    (dolist (accao lista-de-accoes)
-      (setf estado
-            (funcall resultado
-                     estado
-                     accao)))
-    (estado-pontos estado)))
-
-(defun pontuacao-pp (numero-de-pecas)
-  (pontuacao #'procura-pp numero-de-pecas))
-
-(defun pontuacao-A* (heuristica numero-de-pecas)
-  (labels
-      ((procura (problema)
-         (funcall #'procura-A* problema heuristica)))
-    (pontuacao #'procura numero-de-pecas)))
-
-(defun pontuacao-best (numero-de-pecas)
-  (pontuacao #'procura-best numero-de-pecas))
-
-(defun executa-com-heuristica (funcao-procura heuristica numero-de-pecas)
-  (labels
-      ((procura (problema)
-         (funcall funcao-procura problema heuristica)))
-    (executa #'procura numero-de-pecas)))
-
-(defun executa (funcao-procura numero-de-pecas)
-  (let* ((problema (problema-random numero-de-pecas))
-         (estado   (problema-estado-inicial problema)))
-    (executa-jogadas estado
-                     (time (funcall funcao-procura
-                                    problema)))))
-
-(defun executa-pp (numero-de-pecas)
-  (funcall #'executa #'procura-pp numero-de-pecas))
-
-(defun executa-A* (heuristica numero-de-pecas)
-  (executa-com-heuristica #'procura-A* heuristica numero-de-pecas))
-
-(defun executa-best (numero-de-pecas)
-  (funcall #'executa #'procura-best-problema numero-de-pecas))
-
 ;;;-----------------------------------------------------------------------------
 ;;; Profiling
+
+(defun random-number-from-to (from to)
+  (+ from (random (1+ (- to from)))))
+
+(defun executa-accoes (estado accoes)
+  (if (null accoes)
+      estado
+      (executa-accoes (resultado estado
+                                 (car accoes))
+                      (cdr accoes))))
+
+;; Nao funciona neste momento
+;; (defun random-estado (pecas)
+;;   (let* ((estado (make-estado :pecas-por-colocar pecas))
+;;          (sol    (lambda (estado)
+;;                    (and (solucao estado)
+;;                         (zerop (estado-pontos estado)))))
+;;          (avaliacao (lambda (estado)
+;;                       (+ (custo-altura-agregada estado)
+;;                          (custo-buracos         estado)
+;;                          (heuristica-altura-3  estado))))
+;;          (accoes (procura-best-parametrizada array
+;;                                              pecas
+;;                                              avaliacao
+;;                                              10
+;;                                              100)))
+;;     (executa-accoes estado accoes)))
+;; (defun random-array ()
+;;   (tabuleiro->array (estado-tabuleiro (random-estado (random-pecas 7)))))
+
+;; (dribble "tabuleiros-pre-computados.lisp")
+;; (print (loop for i from 1 upto 100 collect (random-array)))
+;; (dribble)
+
+;; (defun heuristica-altura-3 (estado)
+;;   "heuristica-altura-3: estado --> numero
+;; Recompensa pela altura ser um multiplo de 3"
+;;   (let* ((tabuleiro (estado-tabuleiro estado))
+;;          (altura-max (apply #'max
+;;                             (loop for c
+;;                                   from 0 to 9
+;;                                   collect (tabuleiro-altura-coluna tabuleiro
+;;                                                                    c)))))
+;;     (floor (/ altura-max
+;;               3))))
 
 (defmacro get-time (&body forms)
   (let ((run1 (gensym))
@@ -73,15 +69,4 @@
             (,result (progn ,@forms))
             (,run2 (get-internal-run-time)))
        (float (/ (- ,run2 ,run1) internal-time-units-per-second)))))
-
-;; Doesn't seem to work...
-(defun time-mean (form times)
-  (apply #'mean
-         (loop for i from 1 upto times
-               collect (get-time form))))
-
-(defun mean (&rest sequence)
-  (if (null sequence)
-      nil
-      (/ (reduce #'+ sequence) (length sequence))))
 
