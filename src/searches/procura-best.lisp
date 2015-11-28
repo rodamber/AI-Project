@@ -19,6 +19,9 @@
                               10
                               100))
 
+(defun procura-best-fixa (array pecas f)
+  (procura-best-parametrizada array pecas f 10 10))
+
 (defun procura-best-parametrizada (array pecas f poda-periodo poda-tamanho)
   (let* ((tabuleiro      (array->tabuleiro array))
          (estado-inicial (make-estado :tabuleiro tabuleiro

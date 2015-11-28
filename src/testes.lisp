@@ -26,6 +26,10 @@
                                  (car accoes))
                       (cdr accoes))))
 
+
+(defun pontuacao (estado accoes)
+ (estado-pontos (executa-accoes estado accoes)))
+
 ;; Nao funciona neste momento
 ;; (defun random-estado (pecas)
 ;;   (let* ((estado (make-estado :pecas-por-colocar pecas))
