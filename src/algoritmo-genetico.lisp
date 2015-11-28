@@ -1,8 +1,10 @@
 (defconstant percentagem-selecao 0.5)
 (defconstant probabilidade-mutacao 10)
-(defconstant tab-aleatorio-decaimento 0.4)
 (defconstant tab-aleatorio-prob-inicial 1.0)
-(defconstant 25-segundos-clocks (* internal-time-units-per-second 25))
+(defconstant tab-aleatorio-decaimento 0.3)
+(defconstant poda-tamanho-max 1000)
+(defconstant poda-periodo-max 100)
+(defconstant 30-segundos-clocks (* internal-time-units-per-second 30))
 
 (defstruct problemaGen
 "ProblemaGen
@@ -45,9 +47,10 @@
 (defun selection (problemaGen)
 "fitness: problemaGen x lista de probabilidades de selecao -> lista de estadosGen selecionados"
     (let ((populacao (problemaGen-populacao problemaGen))
-          (lista-selection '()))
+          (lista-selection '())
+          (contador 1000))
 
-        (loop while (< (list-length lista-selection) (* (problemaGen-populacao-dim problemaGen) percentagem-selecao)) do
+        (loop while (and (not (zerop (decf contador))) (< (list-length lista-selection) (* (problemaGen-populacao-dim problemaGen) percentagem-selecao))) do
             (let ((n-aleatorio (/ (random 100) 100)) (prob-anterior 0))
                 (dolist (estado populacao)
                     (if (> (+ prob-anterior (estadoGen-resultado estado)) n-aleatorio)
@@ -56,6 +59,7 @@
                                (setf problemaGen (fitness problemaGen))
                                (return nil))
                         (incf prob-anterior (estadoGen-resultado estado))))))
+        (if (null lista-selection) (setf lista-selection populacao))
 
         lista-selection))
 
@@ -120,7 +124,7 @@
 (defun cria-nova-geracao (problemaGen)
   (normalize (mutation (crossover problemaGen (selection (fitness problemaGen))))))
 
-(defun algoritmo-genetico (algoritmo tamanho-populacao numero-testes &rest heuristicas)
+(defun algoritmo-genetico-fixo (algoritmo tamanho-populacao numero-testes &rest heuristicas)
     (let* ((n-geracao 0) res-total best
            (n-heuristicas (list-length heuristicas))
            (populacao 
@@ -140,27 +144,65 @@
 
         (dolist (estado (problemaGen-populacao problemaGen))        
             (dolist (teste (problemaGen-lista-testes problemaGen))
-                (let* ((problema (make-problema
-                        :estado-inicial (make-estado :tabuleiro (teste-tabuleiro teste)
-                                                     :pecas-por-colocar (teste-lista-pecas teste))))
-                      (heuristica #'(lambda (e) (apply #'+ 
+                (let* ((heuristica #'(lambda (e) (apply #'+ 
                                    (mapcar #'(lambda (c h) (* c (funcall h e))) 
                                            (estadoGen-constantes estado)
                                            (problemaGen-heuristicas problemaGen)))))
                       (tempo-comeco (get-internal-run-time))
-                      (pontuacao (funcall algoritmo problema heuristica)))
-                    (if (> (- (get-internal-run-time) tempo-comeco) 25-segundos-clocks) (setf pontuacao 0))
+                      (pontuacao (pontuacao (make-estado :tabuleiro (teste-tabuleiro teste) :pecas-por-colocar (teste-lista-pecas teste)) (funcall algoritmo (teste-tabuleiro teste) (teste-lista-pecas teste) heuristica))))
+                    (if (> (- (get-internal-run-time) tempo-comeco) 30-segundos-clocks) (setf pontuacao 0))
                     (incf (estadoGen-resultado estado) pontuacao)))
             (incf res-total (estadoGen-resultado estado))
             (if (< best (estadoGen-resultado estado)) (setf best (estadoGen-resultado estado)))
-            (print (format nil " ESTADO || resultado: ~D constantes: ~S" (estadoGen-resultado estado) (estadoGen-constantes estado))))
+            (print (format nil " ESTADO || resultado: ~D constantes: ~S" (/ (estadoGen-resultado estado) numero-testes) (estadoGen-constantes estado))))
 
         (incf n-geracao)
         (setf problemaGen (cria-nova-geracao problemaGen))
         (print (format nil "*************** FIM DA GERACAO ~D | MEDIA: ~,4F | BEST: ~,4F ***************~%"
                     n-geracao 
-                    (/ res-total (problemaGen-populacao-dim problemaGen))
-                    best))) n-geracao))
+                    (/ res-total (problemaGen-populacao-dim problemaGen) numero-testes)
+                    (/ best numero-testes)))) n-geracao))
+
+(defun algoritmo-genetico-parametrizado (algoritmo tamanho-populacao numero-testes &rest heuristicas)
+    (let* ((n-geracao 0) res-total best
+           (n-heuristicas (list-length heuristicas))
+           (populacao 
+                (cria-lista tamanho-populacao #'(lambda () (make-estadoGen :constantes 
+                    (cria-lista n-heuristicas #'(lambda () (random 100)))))))
+           (problemaGen (normalize (make-problemaGen :populacao populacao
+                                                     :populacao-dim tamanho-populacao
+                                                     :algoritmo algoritmo
+                                                     :heuristicas heuristicas))))
+
+    (loop do
+        (setf (problemaGen-lista-testes problemaGen) (cria-lista numero-testes
+            #'(lambda () (make-teste :tabuleiro (cria-tabuleiro-aleatorio tab-aleatorio-prob-inicial tab-aleatorio-decaimento)
+                                     :lista-pecas (random-pecas (+ 4 (random 3)))))))
+        (setf res-total 0)
+        (setf best 0)
+
+        (dolist (estado (problemaGen-populacao problemaGen))        
+            (dolist (teste (problemaGen-lista-testes problemaGen))
+                (let* ((tamanho-poda (1+ (floor (* (nth 0 (estadoGen-constantes estado)) poda-tamanho-max))))
+                       (periodo-poda (1+ (floor (* (nth 1 (estadoGen-constantes estado)) poda-periodo-max))))
+                       (heuristica #'(lambda (e) (apply #'+ 
+                                   (mapcar #'(lambda (c h) (* c (funcall h e))) 
+                                           (estadoGen-constantes estado)
+                                           (problemaGen-heuristicas problemaGen)))))
+                      (tempo-comeco (get-internal-run-time))
+                      (pontuacao (pontuacao (make-estado :tabuleiro (teste-tabuleiro teste) :pecas-por-colocar (teste-lista-pecas teste)) (funcall algoritmo (teste-tabuleiro teste) (teste-lista-pecas teste) heuristica periodo-poda tamanho-poda))))
+                    (if (> (- (get-internal-run-time) tempo-comeco) 30-segundos-clocks) (setf pontuacao 0))
+                    (incf (estadoGen-resultado estado) pontuacao)))
+            (incf res-total (estadoGen-resultado estado))
+            (if (< best (estadoGen-resultado estado)) (setf best (estadoGen-resultado estado)))
+            (print (format nil " ESTADO || resultado: ~D constantes: ~S" (/ (estadoGen-resultado estado) numero-testes) (estadoGen-constantes estado))))
+
+        (incf n-geracao)
+        (setf problemaGen (cria-nova-geracao problemaGen))
+        (print (format nil "*************** FIM DA GERACAO ~D | MEDIA: ~,4F | BEST: ~,4F ***************~%"
+                    n-geracao 
+                    (/ res-total (problemaGen-populacao-dim problemaGen numero-testes))
+                    (/ best numero-testes)))) n-geracao))
 
 
 (defun media-cons (problemaGen)
