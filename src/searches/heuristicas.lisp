@@ -30,17 +30,17 @@
         (incf relevo (abs (- a1 a2)))))
     relevo))
 
-(defun heuristica-pontuacao (estado)
+(defun heuristica-pontuacao-1 (estado)
   "heuristica-pontuacao: estado --> numero"
   (let* ((numero-pecas (+ (list-length (estado-pecas-colocadas estado))
                          (list-length (estado-pecas-por-colocar estado))))
          (pontuacao-maxima (* 80 numero-pecas)))
-    (- pontuacao-maxima (estado-pontos estado)))
+    (- pontuacao-maxima (estado-pontos estado))))
 
-
-
-  (- (+ (pontos-maximos (estado-pecas-colocadas    estado))
-        (pontos-maximos (estado-pecas-por-colocar estado)))
+(defun heuristica-pontuacao-2 (estado)
+  "heuristica-pontuacao: estado --> numero"
+  (- (+ (pontos-maximos (estado-pecas-por-colocar estado))
+        (pontos-maximos (estado-pecas-colocadas   estado)))
      (estado-pontos estado)))
 
 (defun heuristica-altura (estado)
