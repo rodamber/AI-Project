@@ -2,8 +2,8 @@
 (defconstant probabilidade-mutacao 10)
 (defconstant tab-aleatorio-prob-inicial 1.0)
 (defconstant tab-aleatorio-decaimento 0.3)
-(defconstant poda-tamanho-max 1000)
-(defconstant poda-periodo-max 100)
+(defconstant poda-tamanho-max 200)
+(defconstant poda-periodo-max 200)
 (defconstant 30-segundos-clocks (* internal-time-units-per-second 30))
 
 (defstruct problemaGen
@@ -137,7 +137,7 @@
 
     (loop do
         (setf (problemaGen-lista-testes problemaGen) (cria-lista numero-testes
-            #'(lambda () (make-teste :tabuleiro (cria-tabuleiro-aleatorio tab-aleatorio-prob-inicial tab-aleatorio-decaimento)
+            #'(lambda () (make-teste :tabuleiro (aref tabuleiros-pre-computados (random (array-dimension tabuleiros-pre-computados 0)))
                                      :lista-pecas (random-pecas (+ 4 (random 3)))))))
         (setf res-total 0)
         (setf best 0)
@@ -176,7 +176,7 @@
 
     (loop do
         (setf (problemaGen-lista-testes problemaGen) (cria-lista numero-testes
-            #'(lambda () (make-teste :tabuleiro (cria-tabuleiro-aleatorio tab-aleatorio-prob-inicial tab-aleatorio-decaimento)
+            #'(lambda () (make-teste :tabuleiro (aref tabuleiros-pre-computados (random (array-dimension tabuleiros-pre-computados 0)))
                                      :lista-pecas (random-pecas (+ 4 (random 3)))))))
         (setf res-total 0)
         (setf best 0)
@@ -201,7 +201,7 @@
         (setf problemaGen (cria-nova-geracao problemaGen))
         (print (format nil "*************** FIM DA GERACAO ~D | MEDIA: ~,4F | BEST: ~,4F ***************~%"
                     n-geracao 
-                    (/ res-total (problemaGen-populacao-dim problemaGen numero-testes))
+                    (/ res-total (problemaGen-populacao-dim problemaGen) numero-testes)
                     (/ best numero-testes)))) n-geracao))
 
 
