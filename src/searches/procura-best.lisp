@@ -76,13 +76,6 @@
                    ;; Toma a melhor solucao encontrada ate entao e recomeca com
                    ;; valores de seleccao mais abrangentes.
                    ((solucao (no-estado no))
-
-                    (print (format nil
-                                   "no: ~4,'0d; periodo: ~4,'0d; tamanho: ~4,'0d"
-                                   (estado-pontos (no-estado no))
-                                   seleccao-periodo
-                                   seleccao-tamanho))
-
                     (setf no-objectivo (melhor-no no no-objectivo))
 
                     (setf seleccao-periodo (* 2 seleccao-periodo))
