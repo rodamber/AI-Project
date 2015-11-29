@@ -3,13 +3,20 @@
       fronteira
       (subseq fronteira 0 n)))
 
-(defun funcao-avaliacao-parametrizada (estado a b c)
-  (+ (* a (custo-oportunidade   estado))
-     (* b (heuristica-altura    estado))
-     (* c (heuristica-pontuacao estado))))
-
 (defun funcao-avaliacao (estado)
-  (funcao-avaliacao-parametrizada estado 1 0 1))
+  (funcao-avaliacao-parametrizada estado
+                                  (list 1 #'custo-oportunidade)
+                                  (list 1 #'custo-buracos)
+                                  (list 1 #'heuristica-pontuacao)))
+
+(defun funcao-avaliacao-parametrizada (estado &rest constantes-heuristicas)
+  (apply #'+
+         (map 'list
+              #'(lambda (c-h)
+                  (* (car c-h)
+                     (funcall (cadr c-h)
+                              estado)))
+              constantes-heuristicas)))
 
 (defun procura-best (array pecas)
   "procura-best-problema: array x pecas --> lista de accoes"

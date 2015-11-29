@@ -2,6 +2,7 @@
 (load "estado.lisp")
 (load "accao.lisp")
 (load "problema.lisp")
+(load "tabuleiros-pre-computados.lisp")
 (load "utils.lisp")
 (load "searches/procura-pp.lisp")
 (load "searches/procura-astar.lisp")
@@ -148,8 +149,13 @@ Recompensa pela altura ser um multiplo de 3"
 
 (defun dlog (fn form)
   (dribble (concatenate 'string fn (current-date-string) ".log"))
-  (print form)
+  form
   (dribble))
+
+(defun mean (&rest sequence)
+  (if (null sequence)
+      nil
+      (/ (reduce #'+ sequence) (length sequence))))
 
 (defun current-date-string ()
   "Returns current date as a string."
