@@ -1,0 +1,290 @@
+;; Dribble of #<IO TERMINAL-STREAM> started on 2015-11-30 08:46:21.
+#<OUTPUT BUFFERED FILE-STREAM CHARACTER #P"gen20151130-084621.log">
+[16]> (algoritmo-genetico 10 10 2 #'custo-oportunidade #'custo-buracos #'heuristica-pontuacao-1)
+  --> Individuo: 01 | Resultado: 370 | Constantes: 0.73 0.24 0.65
+  --> Individuo: 02 | Resultado: 370 | Constantes: 0.76 0.03 0.65
+  --> Individuo: 03 | Resultado: 340 | Constantes: 0.10 0.94 0.31
+  --> Individuo: 04 | Resultado: 320 | Constantes: 0.15 0.64 0.75
+  --> Individuo: 05 | Resultado: 320 | Constantes: 0.14 0.54 0.83
+  --> Individuo: 06 | Resultado: 300 | Constantes: 0.05 0.89 0.45
+  --> Individuo: 07 | Resultado: 320 | Constantes: 0.06 0.74 0.67
+  --> Individuo: 08 | Resultado: 320 | Constantes: 0.09 0.85 0.52
+  --> Individuo: 09 | Resultado: 320 | Constantes: 0.06 0.97 0.24
+  --> Individuo: 10 | Resultado: 370 | Constantes: 0.75 0.64 0.13
+
+=============== Fim da Geracao 01 | Media: 335.0000 | Best: 370.0000 | Constantes: 0.73 0.24 0.65 ==============
+
+  --> Individuo: 01 | Resultado: 420 | Constantes: 0.07 0.94 0.33
+  --> Individuo: 02 | Resultado: 360 | Constantes: 0.05 0.90 0.42
+  --> Individuo: 03 | Resultado: 330 | Constantes: 0.06 0.70 0.71
+  --> Individuo: 04 | Resultado: 430 | Constantes: 0.16 0.68 0.71
+  --> Individuo: 05 | Resultado: 330 | Constantes: 0.05 0.65 0.76
+  --> Individuo: 06 | Resultado: 450 | Constantes: 0.15 0.88 0.45
+  --> Individuo: 07 | Resultado: 430 | Constantes: 0.98 0.03 0.17
+  --> Individuo: 08 | Resultado: 480 | Constantes: 0.64 0.54 0.55
+  --> Individuo: 09 | Resultado: 400 | Constantes: 0.14 0.61 0.78
+  --> Individuo: 10 | Resultado: 400 | Constantes: 0.15 0.58 0.80
+
+=============== Fim da Geracao 02 | Media: 403.0000 | Best: 480.0000 | Constantes: 0.64 0.54 0.55 ==============
+
+  --> Individuo: 01 | Resultado: 360 | Constantes: 0.19 0.79 0.58
+  --> Individuo: 02 | Resultado: 360 | Constantes: 0.13 0.74 0.66
+  --> Individuo: 03 | Resultado: 360 | Constantes: 0.05 0.94 0.33
+  --> Individuo: 04 | Resultado: 360 | Constantes: 0.07 0.90 0.42
+  --> Individuo: 05 | Resultado: 340 | Constantes: 0.06 0.98 0.19
+  --> Individuo: 06 | Resultado: 370 | Constantes: 0.92 0.03 0.39
+  --> Individuo: 07 | Resultado: 360 | Constantes: 0.54 0.51 0.67
+  --> Individuo: 08 | Resultado: 360 | Constantes: 0.18 0.69 0.70
+  --> Individuo: 09 | Resultado: 360 | Constantes: 0.19 0.69 0.70
+  --> Individuo: 10 | Resultado: 360 | Constantes: 0.54 0.75 0.38
+
+=============== Fim da Geracao 03 | Media: 359.0000 | Best: 370.0000 | Constantes: 0.92 0.03 0.39 ==============
+
+  --> Individuo: 01 | Resultado: 360 | Constantes: 0.05 0.98 0.19
+  --> Individuo: 02 | Resultado: 340 | Constantes: 0.06 0.94 0.33
+  --> Individuo: 03 | Resultado: 350 | Constantes: 0.15 0.90 0.40
+  --> Individuo: 04 | Resultado: 310 | Constantes: 0.05 0.82 0.57
+  --> Individuo: 05 | Resultado: 350 | Constantes: 0.19 0.93 0.32
+  --> Individuo: 06 | Resultado: 310 | Constantes: 0.06 0.70 0.71
+  --> Individuo: 07 | Resultado: 360 | Constantes: 0.23 0.84 0.48
+  --> Individuo: 08 | Resultado: 370 | Constantes: 0.80 0.03 0.60
+  --> Individuo: 09 | Resultado: 370 | Constantes: 0.81 0.03 0.59
+  --> Individuo: 10 | Resultado: 370 | Constantes: 0.64 0.61 0.47
+
+=============== Fim da Geracao 04 | Media: 349.0000 | Best: 370.0000 | Constantes: 0.80 0.03 0.60 ==============
+
+  --> Individuo: 01 | Resultado: 420 | Constantes: 0.63 0.73 0.26
+  --> Individuo: 02 | Resultado: 370 | Constantes: 0.30 0.04 0.95
+  --> Individuo: 03 | Resultado: 420 | Constantes: 0.73 0.03 0.69
+  --> Individuo: 04 | Resultado: 420 | Constantes: 0.72 0.55 0.42
+  --> Individuo: 05 | Resultado: 410 | Constantes: 0.80 0.03 0.60
+  --> Individuo: 06 | Resultado: 410 | Constantes: 0.80 0.03 0.59
+  --> Individuo: 07 | Resultado: 370 | Constantes: 0.05 0.95 0.31
+  --> Individuo: 08 | Resultado: 410 | Constantes: 0.19 0.96 0.19
+  --> Individuo: 09 | Resultado: 420 | Constantes: 0.60 0.57 0.55
+  --> Individuo: 10 | Resultado: 420 | Constantes: 0.87 0.03 0.50
+
+=============== Fim da Geracao 05 | Media: 407.0000 | Best: 420.0000 | Constantes: 0.63 0.73 0.26 ==============
+
+  --> Individuo: 01 | Resultado: 390 | Constantes: 0.64 0.03 0.77
+  --> Individuo: 02 | Resultado: 370 | Constantes: 0.44 0.04 0.90
+  --> Individuo: 03 | Resultado: 390 | Constantes: 0.90 0.03 0.44
+  --> Individuo: 04 | Resultado: 390 | Constantes: 0.70 0.53 0.48
+  --> Individuo: 05 | Resultado: 390 | Constantes: 0.68 0.65 0.35
+  --> Individuo: 06 | Resultado: 290 | Constantes: 0.05 0.86 0.50
+  --> Individuo: 07 | Resultado: 390 | Constantes: 0.90 0.03 0.44
+  --> Individuo: 08 | Resultado: 390 | Constantes: 0.70 0.53 0.48
+  --> Individuo: 09 | Resultado: 390 | Constantes: 0.76 0.03 0.65
+  --> Individuo: 10 | Resultado: 390 | Constantes: 0.77 0.03 0.64
+
+=============== Fim da Geracao 06 | Media: 378.0000 | Best: 390.0000 | Constantes: 0.64 0.03 0.77 ==============
+
+  --> Individuo: 01 | Resultado: 440 | Constantes: 0.52 0.75 0.41
+  --> Individuo: 02 | Resultado: 430 | Constantes: 0.60 0.03 0.80
+  --> Individuo: 03 | Resultado: 430 | Constantes: 0.87 0.03 0.49
+  --> Individuo: 04 | Resultado: 400 | Constantes: 0.05 0.89 0.45
+  --> Individuo: 05 | Resultado: 290 | Constantes: 0.04 0.80 0.59
+  --> Individuo: 06 | Resultado: 430 | Constantes: 0.84 0.03 0.55
+  --> Individuo: 07 | Resultado: 430 | Constantes: 0.64 0.03 0.77
+  --> Individuo: 08 | Resultado: 430 | Constantes: 0.64 0.03 0.77
+  --> Individuo: 09 | Resultado: 440 | Constantes: 0.82 0.03 0.58
+  --> Individuo: 10 | Resultado: 430 | Constantes: 0.87 0.03 0.49
+
+=============== Fim da Geracao 07 | Media: 415.0000 | Best: 440.0000 | Constantes: 0.52 0.75 0.41 ==============
+
+  --> Individuo: 01 | Resultado: 340 | Constantes: 0.08 0.05 1.00
+  --> Individuo: 02 | Resultado: 460 | Constantes: 0.64 0.62 0.45
+  --> Individuo: 03 | Resultado: 340 | Constantes: 0.06 0.04 1.00
+  --> Individuo: 04 | Resultado: 460 | Constantes: 0.54 0.75 0.38
+  --> Individuo: 05 | Resultado: 460 | Constantes: 0.80 0.04 0.60
+  --> Individuo: 06 | Resultado: 460 | Constantes: 0.75 0.02 0.66
+  --> Individuo: 07 | Resultado: 490 | Constantes: 0.87 0.03 0.49
+  --> Individuo: 08 | Resultado: 490 | Constantes: 0.87 0.03 0.49
+  --> Individuo: 09 | Resultado: 460 | Constantes: 0.73 0.04 0.68
+  --> Individuo: 10 | Resultado: 340 | Constantes: 0.04 0.72 0.69
+
+=============== Fim da Geracao 08 | Media: 430.0000 | Best: 490.0000 | Constantes: 0.87 0.03 0.49 ==============
+
+  --> Individuo: 01 | Resultado: 340 | Constantes: 0.16 0.11 0.98
+  --> Individuo: 02 | Resultado: 440 | Constantes: 0.66 0.02 0.75
+  --> Individuo: 03 | Resultado: 410 | Constantes: 0.85 0.03 0.52
+  --> Individuo: 04 | Resultado: 420 | Constantes: 0.82 0.04 0.57
+  --> Individuo: 05 | Resultado: 420 | Constantes: 0.64 0.62 0.45
+  --> Individuo: 06 | Resultado: 420 | Constantes: 0.64 0.62 0.45
+  --> Individuo: 07 | Resultado: 410 | Constantes: 0.85 0.04 0.52
+  --> Individuo: 08 | Resultado: 420 | Constantes: 0.82 0.03 0.57
+  --> Individuo: 09 | Resultado: 410 | Constantes: 0.87 0.03 0.49
+  --> Individuo: 10 | Resultado: 410 | Constantes: 0.87 0.03 0.49
+
+=============== Fim da Geracao 09 | Media: 410.0000 | Best: 440.0000 | Constantes: 0.66 0.02 0.75 ==============
+
+  --> Individuo: 01 | Resultado: 370 | Constantes: 0.21 0.79 0.58
+  --> Individuo: 02 | Resultado: 380 | Constantes: 0.55 0.09 0.83
+  --> Individuo: 03 | Resultado: 390 | Constantes: 0.88 0.05 0.47
+  --> Individuo: 04 | Resultado: 380 | Constantes: 0.62 0.60 0.51
+  --> Individuo: 05 | Resultado: 390 | Constantes: 0.87 0.04 0.50
+  --> Individuo: 06 | Resultado: 400 | Constantes: 0.86 0.03 0.52
+  --> Individuo: 07 | Resultado: 380 | Constantes: 0.74 0.02 0.68
+  --> Individuo: 08 | Resultado: 380 | Constantes: 0.76 0.03 0.65
+  --> Individuo: 09 | Resultado: 390 | Constantes: 0.87 0.03 0.50
+  --> Individuo: 10 | Resultado: 400 | Constantes: 0.86 0.04 0.51
+
+=============== Fim da Geracao 10 | Media: 386.0000 | Best: 400.0000 | Constantes: 0.86 0.03 0.52 ==============
+
+  --> Individuo: 01 | Resultado: 410 | Constantes: 0.56 0.59 0.58
+  --> Individuo: 02 | Resultado: 360 | Constantes: 0.30 0.04 0.95
+  --> Individuo: 03 | Resultado: 420 | Constantes: 0.84 0.05 0.54
+  --> Individuo: 04 | Resultado: 420 | Constantes: 0.79 0.02 0.61
+  --> Individuo: 05 | Resultado: 370 | Constantes: 0.24 0.11 0.96
+  --> Individuo: 06 | Resultado: 410 | Constantes: 0.49 0.70 0.52
+  --> Individuo: 07 | Resultado: 390 | Constantes: 0.74 0.51 0.43
+  --> Individuo: 08 | Resultado: 420 | Constantes: 0.78 0.06 0.63
+  --> Individuo: 09 | Resultado: 420 | Constantes: 0.83 0.03 0.56
+  --> Individuo: 10 | Resultado: 410 | Constantes: 0.57 0.55 0.60
+
+=============== Fim da Geracao 11 | Media: 403.0000 | Best: 420.0000 | Constantes: 0.84 0.05 0.54 ==============
+
+  --> Individuo: 01 | Resultado: 460 | Constantes: 0.73 0.05 0.69
+  --> Individuo: 02 | Resultado: 460 | Constantes: 0.80 0.05 0.60
+  --> Individuo: 03 | Resultado: 400 | Constantes: 0.37 0.03 0.93
+  --> Individuo: 04 | Resultado: 440 | Constantes: 0.63 0.09 0.77
+  --> Individuo: 05 | Resultado: 450 | Constantes: 0.83 0.05 0.55
+  --> Individuo: 06 | Resultado: 450 | Constantes: 0.84 0.03 0.54
+  --> Individuo: 07 | Resultado: 460 | Constantes: 0.81 0.03 0.59
+  --> Individuo: 08 | Resultado: 460 | Constantes: 0.59 0.57 0.57
+  --> Individuo: 09 | Resultado: 440 | Constantes: 0.34 0.72 0.61
+  --> Individuo: 10 | Resultado: 440 | Constantes: 0.61 0.09 0.79
+
+=============== Fim da Geracao 12 | Media: 446.0000 | Best: 460.0000 | Constantes: 0.73 0.05 0.69 ==============
+
+  --> Individuo: 01 | Resultado: 390 | Constantes: 0.72 0.03 0.70
+  --> Individuo: 02 | Resultado: 390 | Constantes: 0.71 0.08 0.70
+  --> Individuo: 03 | Resultado: 390 | Constantes: 0.65 0.03 0.76
+  --> Individuo: 04 | Resultado: 390 | Constantes: 0.53 0.07 0.85
+  --> Individuo: 05 | Resultado: 390 | Constantes: 0.53 0.65 0.55
+  --> Individuo: 06 | Resultado: 400 | Constantes: 0.39 0.65 0.65
+  --> Individuo: 07 | Resultado: 390 | Constantes: 0.56 0.63 0.54
+  --> Individuo: 08 | Resultado: 390 | Constantes: 0.52 0.08 0.85
+  --> Individuo: 09 | Resultado: 390 | Constantes: 0.68 0.05 0.74
+  --> Individuo: 10 | Resultado: 390 | Constantes: 0.66 0.10 0.75
+
+=============== Fim da Geracao 13 | Media: 391.0000 | Best: 400.0000 | Constantes: 0.39 0.65 0.65 ==============
+
+  --> Individuo: 01 | Resultado: 410 | Constantes: 0.61 0.04 0.79
+  --> Individuo: 02 | Resultado: 430 | Constantes: 0.65 0.58 0.49
+  --> Individuo: 03 | Resultado: 410 | Constantes: 0.65 0.03 0.76
+  --> Individuo: 04 | Resultado: 410 | Constantes: 0.65 0.03 0.76
+  --> Individuo: 05 | Resultado: 410 | Constantes: 0.54 0.64 0.55
+  --> Individuo: 06 | Resultado: 400 | Constantes: 0.55 0.07 0.83
+  --> Individuo: 07 | Resultado: 410 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 08 | Resultado: 410 | Constantes: 0.70 0.05 0.72
+  --> Individuo: 09 | Resultado: 410 | Constantes: 0.57 0.09 0.82
+  --> Individuo: 10 | Resultado: 410 | Constantes: 0.61 0.03 0.79
+
+=============== Fim da Geracao 14 | Media: 411.0000 | Best: 430.0000 | Constantes: 0.65 0.58 0.49 ==============
+
+  --> Individuo: 01 | Resultado: 460 | Constantes: 0.64 0.08 0.76
+  --> Individuo: 02 | Resultado: 460 | Constantes: 0.66 0.03 0.75
+  --> Individuo: 03 | Resultado: 460 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 04 | Resultado: 460 | Constantes: 0.69 0.08 0.71
+  --> Individuo: 05 | Resultado: 460 | Constantes: 0.47 0.57 0.67
+  --> Individuo: 06 | Resultado: 440 | Constantes: 0.77 0.03 0.64
+  --> Individuo: 07 | Resultado: 460 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 08 | Resultado: 460 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 09 | Resultado: 460 | Constantes: 0.64 0.03 0.77
+  --> Individuo: 10 | Resultado: 460 | Constantes: 0.63 0.04 0.78
+
+=============== Fim da Geracao 15 | Media: 458.0000 | Best: 460.0000 | Constantes: 0.64 0.08 0.76 ==============
+
+  --> Individuo: 01 | Resultado: 430 | Constantes: 0.64 0.03 0.77
+  --> Individuo: 02 | Resultado: 430 | Constantes: 0.64 0.08 0.76
+  --> Individuo: 03 | Resultado: 430 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 04 | Resultado: 430 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 05 | Resultado: 410 | Constantes: 0.71 0.03 0.70
+  --> Individuo: 06 | Resultado: 420 | Constantes: 0.72 0.03 0.70
+  --> Individuo: 07 | Resultado: 420 | Constantes: 0.71 0.03 0.70
+  --> Individuo: 08 | Resultado: 420 | Constantes: 0.72 0.03 0.70
+  --> Individuo: 09 | Resultado: 410 | Constantes: 0.55 0.09 0.83
+  --> Individuo: 10 | Resultado: 430 | Constantes: 0.49 0.57 0.66
+
+=============== Fim da Geracao 16 | Media: 423.0000 | Best: 430.0000 | Constantes: 0.64 0.03 0.77 ==============
+
+  --> Individuo: 01 | Resultado: 380 | Constantes: 0.71 0.03 0.70
+  --> Individuo: 02 | Resultado: 380 | Constantes: 0.71 0.03 0.70
+  --> Individuo: 03 | Resultado: 380 | Constantes: 0.61 0.10 0.78
+  --> Individuo: 04 | Resultado: 380 | Constantes: 0.65 0.03 0.76
+  --> Individuo: 05 | Resultado: 380 | Constantes: 0.71 0.03 0.71
+  --> Individuo: 06 | Resultado: 380 | Constantes: 0.70 0.05 0.71
+  --> Individuo: 07 | Resultado: 380 | Constantes: 0.67 0.04 0.74
+  --> Individuo: 08 | Resultado: 380 | Constantes: 0.68 0.08 0.73
+  --> Individuo: 09 | Resultado: 380 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 10 | Resultado: 380 | Constantes: 0.69 0.05 0.72
+
+=============== Fim da Geracao 17 | Media: 380.0000 | Best: 380.0000 | Constantes: 0.71 0.03 0.70 ==============
+
+  --> Individuo: 01 | Resultado: 400 | Constantes: 0.68 0.08 0.73
+  --> Individuo: 02 | Resultado: 400 | Constantes: 0.68 0.08 0.73
+  --> Individuo: 03 | Resultado: 400 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 04 | Resultado: 400 | Constantes: 0.68 0.03 0.74
+  --> Individuo: 05 | Resultado: 400 | Constantes: 0.71 0.05 0.70
+  --> Individuo: 06 | Resultado: 400 | Constantes: 0.71 0.03 0.70
+  --> Individuo: 07 | Resultado: 400 | Constantes: 0.68 0.08 0.73
+  --> Individuo: 08 | Resultado: 400 | Constantes: 0.68 0.08 0.73
+  --> Individuo: 09 | Resultado: 400 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 10 | Resultado: 400 | Constantes: 0.70 0.03 0.72
+
+=============== Fim da Geracao 18 | Media: 400.0000 | Best: 400.0000 | Constantes: 0.68 0.08 0.73 ==============
+
+  --> Individuo: 01 | Resultado: 430 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 02 | Resultado: 430 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 03 | Resultado: 430 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 04 | Resultado: 430 | Constantes: 0.69 0.08 0.72
+  --> Individuo: 05 | Resultado: 430 | Constantes: 0.68 0.08 0.73
+  --> Individuo: 06 | Resultado: 430 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 07 | Resultado: 430 | Constantes: 0.69 0.03 0.72
+  --> Individuo: 08 | Resultado: 430 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 09 | Resultado: 430 | Constantes: 0.69 0.05 0.73
+  --> Individuo: 10 | Resultado: 430 | Constantes: 0.69 0.08 0.72
+
+=============== Fim da Geracao 19 | Media: 430.0000 | Best: 430.0000 | Constantes: 0.68 0.05 0.73 ==============
+
+  --> Individuo: 01 | Resultado: 490 | Constantes: 0.69 0.03 0.73
+  --> Individuo: 02 | Resultado: 490 | Constantes: 0.69 0.05 0.73
+  --> Individuo: 03 | Resultado: 490 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 04 | Resultado: 490 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 05 | Resultado: 490 | Constantes: 0.68 0.08 0.72
+  --> Individuo: 06 | Resultado: 490 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 07 | Resultado: 490 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 08 | Resultado: 500 | Constantes: 0.77 0.04 0.64
+  --> Individuo: 09 | Resultado: 490 | Constantes: 0.69 0.03 0.73
+  --> Individuo: 10 | Resultado: 490 | Constantes: 0.68 0.08 0.73
+
+=============== Fim da Geracao 20 | Media: 491.0000 | Best: 500.0000 | Constantes: 0.77 0.04 0.64 ==============
+
+  --> Individuo: 01 | Resultado: 390 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 02 | Resultado: 390 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 03 | Resultado: 390 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 04 | Resultado: 390 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 05 | Resultado: 390 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 06 | Resultado: 390 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 07 | Resultado: 390 | Constantes: 0.68 0.08 0.72
+  --> Individuo: 08 | Resultado: 390 | Constantes: 0.68 0.08 0.72
+  --> Individuo: 09 | Resultado: 390 | Constantes: 0.68 0.05 0.73
+  --> Individuo: 10 | Resultado: 380 | Constantes: 0.55 0.03 0.83
+
+=============== Fim da Geracao 21 | Media: 389.0000 | Best: 390.0000 | Constantes: 0.68 0.03 0.73 ==============
+
+  --> Individuo: 01 | Resultado: 450 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 02 | Resultado: 450 | Constantes: 0.68 0.03 0.73
+  --> Individuo: 03 | Resultado: 450 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 04 | Resultado: 450 | Constantes: 0.69 0.05 0.72
+  --> Individuo: 05 | Resultado: 450 | Constantes: 0.68 0.08 0.73
+
+** - Continuable Error
+GC: User break
+If you continue (by typing 'continue'): Continue execution
+The following restarts are also available:
+ABORT          :R1      Abort main loop
+Break 1 [17]> :r1
+[18]> (dribble)
+;; Dribble of #<IO TERMINAL-STREAM> finished on 2015-11-30 10:39:07.

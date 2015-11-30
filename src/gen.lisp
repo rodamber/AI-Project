@@ -1,51 +1,60 @@
-(defstruct individuo parametros (fitness 0))
-
-(defun individuo> (i-1 i-2)
-  (cond ((null i-1) i-2)
-        ((null i-2) i-1)
-        (t (> (individuo-fitness i-1)
-              (individuo-fitness i-2)))))
-
 (defun algoritmo-genetico (numero-de-testes
                            tamanho-da-populacao
                            tempo-por-teste
                            &rest heuristicas)
   (let* ((tamanho-dos-individuos (list-length heuristicas))
          (populacao (cria-populacao tamanho-da-populacao tamanho-dos-individuos))
-         (geracao 1))
-    (loop do
-      (let* ((nova-populacao nil)
-             (tabuleiros (obtem-tabuleiros numero-de-testes))
-             (pecas      (obtem-pecas      numero-de-testes))
-             (resultados-da-geracao
-               (apply #'pre-processa-para-seleccao
-                      populacao
-                      numero-de-testes
-                      tempo-por-teste
-                      tabuleiros
-                      pecas
-                      heuristicas)))
-        
-        (princ (format nil
-                       "~%=============== Fim da Geracao ~2,'0d | Media: ~,4F | Best: ~,4F | Parametros: ~{~$~^ ~} ==============~%~%"
-                       geracao
-                       (car   resultados-da-geracao)
-                       (cadr  resultados-da-geracao)
-                       (caddr resultados-da-geracao)))
+         (geracao 1)
+         (log-completo (concatenate 'string "../data/gen-" (current-date-string) "-complete.log"))
+         (log-sumario  (concatenate 'string "../data/gen-" (current-date-string) "-summary.log")))
 
-        (dotimes (s (/ tamanho-da-populacao 2))
-          (let* ((mae (seleccao-natural populacao))
-                 (pai (seleccao-natural populacao))
-                 (filhos (reproducao mae pai tamanho-dos-individuos))
-                 (probabilidade-de-mutacao 0.05))
-            (dolist (filho filhos)
-              (when (<= (probabilidade) probabilidade-de-mutacao)
-                (setf filho (mutacao filho)))
-              (setf (individuo-parametros filho)
-                    (normaliza (individuo-parametros filho)))
-              (push filho nova-populacao))))
-        (setf populacao nova-populacao))
-      (incf geracao))))
+    (with-open-file (stream-complete  log-completo :direction :output)
+      (with-open-file (stream-summary  log-sumario :direction :output)
+
+        (format stream-complete "Individuo Resultado Parametros~%")
+        (format stream-summary  "Geracao Media Best Parametros~%")
+
+        (loop do
+          (let* ((nova-populacao nil)
+                 (tabuleiros (obtem-tabuleiros numero-de-testes))
+                 (pecas      (obtem-pecas      numero-de-testes))
+                 (resultados-da-geracao
+                   (apply #'pre-processa-para-seleccao
+                          stream-complete
+                          populacao
+                          numero-de-testes
+                          tempo-por-teste
+                          tabuleiros
+                          pecas
+                          heuristicas)))
+
+            (format stream-summary
+                    "~2,'0d ~D ~3,'0d ~{~$~^ ~}~%"
+                    geracao
+                    (car   resultados-da-geracao)  ; Media       
+                    (cadr  resultados-da-geracao)  ; Best
+                    (caddr resultados-da-geracao)) ; Parametros
+
+            (princ (format nil
+                           "=== Fim da Geracao ~2,'0d~T|~TMedia: ~3,'0d~T|~TBest: ~D~T|~TParametros: ~{~$~^ ~} ===~%"
+                           geracao
+                           (car   resultados-da-geracao)   ; Media
+                           (cadr  resultados-da-geracao)   ; Best
+                           (caddr resultados-da-geracao))) ; Parametros
+
+            (dotimes (s (/ tamanho-da-populacao 2))
+              (let* ((mae (seleccao-natural populacao))
+                     (pai (seleccao-natural populacao))
+                     (filhos (reproducao mae pai tamanho-dos-individuos))
+                     (probabilidade-de-mutacao 0.05))
+                (dolist (filho filhos)
+                  (when (<= (probabilidade) probabilidade-de-mutacao)
+                    (setf filho (mutacao filho)))
+                  (setf (individuo-parametros filho)
+                        (normaliza (individuo-parametros filho)))
+                  (push filho nova-populacao))))
+            (setf populacao nova-populacao))
+          (incf geracao))))))
 
 (defun cria-individuo-aleatorio (n)
   (make-individuo
@@ -56,6 +65,14 @@
   (let ((populacao nil))
     (dotimes (tam tamanho-da-populacao populacao)
       (push (cria-individuo-aleatorio n) populacao))))
+
+(defstruct individuo parametros (fitness 0))
+
+(defun individuo> (i-1 i-2)
+  (cond ((null i-1) i-2)
+        ((null i-2) i-1)
+        (t (> (individuo-fitness i-1)
+              (individuo-fitness i-2)))))
 
 (defun mutacao (individuo)
   (let* ((parametros (individuo-parametros individuo))
@@ -74,12 +91,18 @@
   (loop for i from 1 to n
         collect (aref tabuleiros-pre-computados (random 1000))))
 
-(defun pre-processa-para-seleccao (populacao numero-de-testes tempo-por-teste tabuleiros pecas &rest heuristicas)
-  (let ((fitness-acumulado 0)
+(defun pre-processa-para-seleccao (stream
+                                   populacao
+                                   numero-de-testes
+                                   tempo-por-teste
+                                   tabuleiros
+                                   pecas
+                                   &rest heuristicas)
+  (let ((fitness-acumulado short-float-epsilon)
         (individuo-n 0)
         (media 0)
         (melhor 0)
-        (constantes nil))
+        (constantes '(0 0 0)))
 
     (dolist (i populacao)
       (incf individuo-n)
@@ -96,9 +119,15 @@
 
         (incf fitness-acumulado valor-fitness)
         (setf media (/ fitness-acumulado individuo-n))
-        
+
+        (format stream
+                "~D ~D ~{~$~^ ~}~%"
+                individuo-n
+                valor-fitness
+                (individuo-parametros i))
+
         (princ (format nil
-                       "  --> Individuo: ~2,'0d | Resultado: ~3,'0d | Parametros: ~{~$~^ ~}~%"
+                       "~TIndividuo: ~2,'0d~T|~TResultado: ~3,'0d~T|~TParametros: ~{~$~^ ~}~%"
                        individuo-n
                        valor-fitness
                        (individuo-parametros i)))))
@@ -147,25 +176,16 @@
     (dotimes (n numero-de-testes)
       (let* ((tabuleiro (pop tabuleiros))
              (pecas-por-colocar (pop pecas))
-             (accoes (procura-best-parametrizada tabuleiro pecas-por-colocar f 1 8 tempo-por-teste))
+             (accoes (procura-best-parametrizada tabuleiro
+                                                 pecas-por-colocar
+                                                 f
+                                                 1
+                                                 8
+                                                 tempo-por-teste))
              (estado (make-estado :tabuleiro tabuleiro
                                   :pecas-por-colocar pecas-por-colocar)))
         (push (pontuacao estado accoes) resultados)))
     (setf (individuo-fitness individuo) (apply #'mean resultados))))
-
-;; (defun reproducao (mae pai)
-;;   (let* ((fm (individuo-fitness mae))
-;;          (fp (individuo-fitness pai))
-;;          (filho-parametros (-->+ (-->* fm mae)
-;;                                  (-->* fp pai))))
-;;     (make-individuo :parametros filho-parametros)))
-
-;; (defun -->* (c vector)
-;;   (map 'list #'(lambda (x) (* c x)) vector))
-
-;; (defun -->+ (vector-1 vector-2)
-;;   (mapcar #'+ vector-1 vector-2))
-
 
 (defun norma (vector)
   (sqrt (apply #'+
