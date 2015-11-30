@@ -199,6 +199,19 @@
          #'(lambda (x) (/ x n))
          vector)))
 
+(defun random-number-from-to (from to)
+  (+ from (random (1+ (- to from)))))
+
+(defun executa-accoes (estado accoes)
+  (if (null accoes)
+      estado
+      (executa-accoes (resultado estado
+                                 (car accoes))
+                      (cdr accoes))))
+
+(defun pontuacao (estado accoes)
+  (estado-pontos (executa-accoes estado accoes)))
+
 (defun potencia (x n)
   (if (zerop n)
       1
@@ -209,3 +222,16 @@
 (defun divide-lista (lista ponto)
   (list (subseq lista 0 ponto)
         (subseq lista ponto)))
+
+(defun mean (&rest sequence)
+  (if (null sequence)
+      nil
+      (/ (reduce #'+ sequence) (length sequence))))
+
+(defun current-date-string ()
+  "Returns current date as a string."
+  (multiple-value-bind (sec min hr day mon yr dow dst-p tz)
+      (get-decoded-time)
+    (declare (ignore dow dst-p tz))
+    (format nil "~4,'0d~2,'0d~2,'0d-~2,'0d~2,'0d~2,'0d" yr mon day hr min sec)))
+
