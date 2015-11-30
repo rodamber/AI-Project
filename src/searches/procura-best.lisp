@@ -62,6 +62,8 @@
                                            :caminho   nil)))
          (fronteira fronteira-inicial))
     (loop do
+      ;; A cada "seleccao-periodo" iteracoes, efectua uma seleccao dos nos mais
+      ;; promissores, ou seja, com menor valor de f(n) = g(n) + h(n).
       (dotimes (i seleccao-periodo)
         (incf relogio
               (get-time
@@ -83,7 +85,7 @@
                     (setf fronteira fronteira-inicial))
                    (t
                     ;; Expande o no e adiciona os nos resultantes a fronteira
-                    ;; ordenados pela funcao de avaliacao f(n) = g(n) + h(n).
+                    ;; ordenados pela funcao de avaliacao, f.
                     (let* ((estado       (no-estado no))
                            (lista-accoes (accoes estado)))
                       (dolist (accao lista-accoes)
@@ -94,18 +96,14 @@
                                                                 (no-caminho no)))))
                           ;; Insere o no na fronteira.
                           (setf fronteira
-                                (merge 'list
-                                       (list novo-no)
-                                       fronteira
-                                       #'no<))))))))))
+                                (merge 'list (list novo-no) fronteira #'no<))))))))))
         ;; Se o tempo limite de execucao for ultrapassado, devolve-se a melhor
         ;; solucao encontrada ate entao.
         (if (> relogio tempo-limite)
             (return-from procura-best-parametrizada
               (if no-objectivo
                   (reverse (no-caminho no-objectivo))))))
-      (setf fronteira
-            (seleccao fronteira
-                      seleccao-tamanho)))))
+      ;; Selecciona os nos mais promissores.
+      (setf fronteira (seleccao fronteira seleccao-tamanho)))))
 
 

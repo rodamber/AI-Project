@@ -28,12 +28,9 @@
                                   :pecas-por-colocar pecas)
                      res)))
 
-(defun doit (procura tab pecas)
+(defun doit ()
   (progn (run-shell-command "make clean all")
-         (load "testes.lisp")
-         (teste procura
-                (aref tabuleiros-pre-computados tab)
-                pecas)))
+         (load "testes.lisp")))
 
 
 (defun dlog (fn form)
