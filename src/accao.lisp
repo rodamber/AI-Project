@@ -1,3 +1,5 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; TIPO ACCAO
 ;;; Este e representado atraves de um par (coluna, peca), que significa que o
 ;;; objectivo e colocar a peca de forma a sua posicao mais a esquerda fique

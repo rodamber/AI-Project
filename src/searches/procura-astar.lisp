@@ -1,3 +1,7 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; PROCURA-A*
+
 (defstruct no
   "Esta estrutura representa um estado na arvore de procura. Contem um estado,
 o valor da funcao de avaliacao nesse estado (f(n) = g(n) + h(n)) e um caminho,
@@ -15,7 +19,10 @@ for menor que a do segundo."
               (no-avaliacao no-2)))))
 
 (defun procura-A* (problema heuristica)
-  "procura-A*: problema x heuristica --> lista de accoes"
+  "procura-A*: problema x heuristica --> lista de accoes
+Recebe uma estrutura do tipo problema e uma funcao heuristica (estado --> inteiro)
+e devolve uma lista de accoes que corresponde ao caminho desde o estado inicial
+ate a ao estado solucao encontrado. Se nao for encontrada solucao, e devolvido nil."
   (let* ((estado-inicial (problema-estado-inicial problema))
          (solucao        (problema-solucao        problema))
          (accoes         (problema-accoes         problema))
