@@ -1,9 +1,8 @@
-(compile-file "2a-entrega.lisp")
-(compile-file "tabuleiros-pre-computados.lisp")
-(compile-file "algoritmo-genetico.lisp")
-(load "2a-entrega.fas")
-(load "tabuleiros-pre-computados.fas")
-(load "algoritmo-genetico.fas")
+(load (compile-file "tabuleiros-pre-computados.lisp"))
+(load (compile-file "2a-entrega.lisp"))
+(load (compile-file "algoritmo-genetico.lisp"))
+(load (compile-file "gen.lisp"))
+(load (compile-file "utils.lisp"))
 
 (defun random-number-from-to (from to)
   (+ from (random (1+ (- to from)))))
@@ -31,12 +30,6 @@
 (defun doit ()
   (progn (run-shell-command "make clean all")
          (load "testes.lisp")))
-
-
-(defun dlog (fn form)
-  (dribble (concatenate 'string fn (current-date-string) ".log"))
-  form
-  (dribble))
 
 (defun mean (&rest sequence)
   (if (null sequence)
