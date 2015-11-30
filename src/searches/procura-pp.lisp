@@ -1,5 +1,12 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; PROCURA-PP
+
 (defun procura-pp (problema)
-  "procura-pp: problema --> lista de accoes"
+  "procura-pp: problema --> lista de accoes
+Versao em profundidade primeiro do TREE-SEARCH. Recebe uma estrutura problema e
+devolve um lista de accoes que corresponde a accoes a tomar para atingir um
+estado objectivo a partir do estado inicial."
   (let ((estado-inicial (problema-estado-inicial problema))
         (solucao        (problema-solucao        problema))
         (accoes         (problema-accoes         problema))
