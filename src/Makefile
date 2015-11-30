@@ -8,6 +8,7 @@ all: ${FINAL}
 ${FINAL}: ${SRCS}
 	cat $^ > $@
 	printf '\n(load "utils.fas")\n' >> $@
+	clisp -c testes.lisp
 	clisp -c utils.lisp
 
 test: ${FINAL}
