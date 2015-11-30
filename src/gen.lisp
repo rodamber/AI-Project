@@ -1,7 +1,18 @@
-(defun algoritmo-genetico (numero-de-testes
-                           tamanho-da-populacao
-                           tempo-por-teste
-                           &rest heuristicas)
+(defun genetico-total (n-testes tamanho tempo)
+  (genetico n-testes
+            tamanho
+            tempo
+            #'custo-altura-agregada
+            #'custo-buracos
+            #'custo-relevo
+            #'heuristica-pontuacao-1
+            #'heuristica-pontuacao-2
+            #'heuristica-altura))
+
+(defun genetico (numero-de-testes
+                 tamanho-da-populacao
+                 tempo-por-teste
+                 &rest heuristicas)
   (let* ((tamanho-dos-individuos (list-length heuristicas))
          (populacao (cria-populacao tamanho-da-populacao tamanho-dos-individuos))
          (geracao 1)
@@ -11,7 +22,10 @@
     (with-open-file (stream-complete  log-completo :direction :output)
       (with-open-file (stream-summary  log-sumario :direction :output)
 
+        (format stream-complete "Heuristicas: ~{~A~^ ~}~%" heuristicas)
         (format stream-complete "Individuo Resultado Parametros~%")
+
+        (format stream-summary  "Heuristicas: ~{~A~^ ~}~%" heuristicas)
         (format stream-summary  "Geracao Media Best Parametros~%")
 
         (loop do
