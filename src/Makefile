@@ -1,7 +1,7 @@
 FINAL=2a-entrega.lisp
-SRCS=tabuleiro.lisp estado.lisp accao.lisp problema.lisp gen.lisp \
-searches/heuristicas.lisp searches/procura-pp.lisp searches/procura-astar.lisp \
-searches/procura-best.lisp
+SRCS=tabuleiro.lisp estado.lisp accao.lisp problema.lisp \
+searches/procura-pp.lisp searches/procura-astar.lisp \
+searches/heuristicas.lisp searches/procura-best.lisp gen.lisp
 
 all: ${FINAL}
 
