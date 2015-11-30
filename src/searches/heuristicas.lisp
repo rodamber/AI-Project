@@ -33,7 +33,7 @@
 (defun heuristica-pontuacao-1 (estado)
   "heuristica-pontuacao: estado --> numero"
   (let* ((numero-pecas (+ (list-length (estado-pecas-colocadas estado))
-                         (list-length (estado-pecas-por-colocar estado))))
+                          (list-length (estado-pecas-por-colocar estado))))
          (pontuacao-maxima (* 80 numero-pecas)))
     (- pontuacao-maxima (estado-pontos estado))))
 
