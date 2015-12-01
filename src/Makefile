@@ -16,5 +16,5 @@ test: ${FINAL}
 	clisp -c $^
 
 clean:
-	rm -f ${FINAL} *.fas *.lib
+	rm -f *.fas *.lib
 

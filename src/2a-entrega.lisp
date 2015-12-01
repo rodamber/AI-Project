@@ -605,9 +605,9 @@ Esta macro e adaptada do site http://cl-cookbook.sourceforge.net/dates_and_times
 Funcao de avaliacao f(n) = g(n) + h(n). E a funcao de avaliacao utilizada no
 procura-best."
   (funcao-avaliacao-parametrizada estado
-                                  (list 1 #'custo-buracos)
-                                  (list 1 #'custo-oportunidade)
-                                  (list 1 #'heuristica-pontuacao-1)))
+                                  (list 16 #'custo-buracos)
+                                  (list 91 #'custo-oportunidade)
+                                  (list 37 #'heuristica-pontuacao-1)))
 
 (defun funcao-avaliacao-parametrizada (estado &rest constantes-heuristicas)
   "funcao-avaliacao-parametrizada: estado x (inteiro heuristica) --> inteiro
