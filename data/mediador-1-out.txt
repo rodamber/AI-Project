@@ -1,0 +1,1114 @@
+;; Dribble of #<IO TERMINAL-STREAM> started on 2015-11-30 21:38:25.
+
+*** - APPLY: too few arguments given to
+      #<COMPILED-FUNCTION PROCURA-BEST-PARAMETRIZADA>
+The following restarts are available:
+ABORT          :R1      Abort main loop
+Break 1 [4]> (mediador-1)
+WARNING: Already dribbling #<IO TERMINAL-STREAM> to
+         #<OUTPUT BUFFERED FILE-STREAM CHARACTER #P"mediador-1-out.txt">
+*** - APPLY: too few arguments given to
+      #<COMPILED-FUNCTION PROCURA-BEST-PARAMETRIZADA>
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort main loop
+Break 2 [5]> (dribbel)
+
+*** - EVAL: undefined function DRIBBEL
+The following restarts are available:
+USE-VALUE      :R1      Input a value to be used instead of (FDEFINITION 'DRIBBEL).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      Input a new value for (FDEFINITION 'DRIBBEL).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort main loop
+Break 3 [6]> (dribble)
+;; Dribble of #<IO TERMINAL-STREAM> finished on 2015-11-30 21:40:54.
+;; Dribble of #<IO TERMINAL-STREAM> started on 2015-11-30 21:40:59.
+
+*** - APPLY: too few arguments given to
+      #<COMPILED-FUNCTION PROCURA-BEST-PARAMETRIZADA>
+The following restarts are available:
+ABORT          :R1      Abort main loop
+Break 1 [8]> (load "2a-entrega.lisp")
+;; Loading file 2a-entrega.lisp ...
+WARNING: DEFUN/DEFMACRO: redefining function GENETICO-TOTAL in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function GENETICO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function CRIA-INDIVIDUO-ALEATORIO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function CRIA-POPULACAO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: (SETF FIND-CLASS): redefining class INDIVIDUO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function INDIVIDUO> in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function MUTACAO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function OBTEM-PECAS in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function OBTEM-TABULEIROS in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function PRE-PROCESSA-PARA-SELECCAO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function PROBABILIDADE in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function REPRODUCAO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function SELECCAO-NATURAL in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function TETRIS-FITNESS in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function NORMA in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function NORMALIZA in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function RANDOM-NUMBER-FROM-TO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/testes.fas
+WARNING: DEFUN/DEFMACRO: redefining function EXECUTA-ACCOES in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/testes.fas
+WARNING: DEFUN/DEFMACRO: redefining function PONTUACAO in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/testes.fas
+WARNING: DEFUN/DEFMACRO: redefining function POTENCIA in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function DIVIDE-LISTA in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function MEAN in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/testes.fas
+WARNING: DEFUN/DEFMACRO: redefining function CURRENT-DATE-STRING in
+         /home/mkwtf/AI-Project/src/2a-entrega.lisp, was defined in
+         /home/mkwtf/AI-Project/src/testes.fas
+;;  Loading file utils.fas ...
+WARNING: (DEFCONSTANT PECA-I0 (MAKE-ARRAY (LIST 4 1) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-I1 (MAKE-ARRAY (LIST 1 4) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (T NIL) (T NIL))))
+         redefines the constant PECA-L0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T NIL NIL) (T T T))))
+         redefines the constant PECA-L1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (NIL T) (T T))))
+         redefines the constant PECA-L2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL NIL T))))
+         redefines the constant PECA-L3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (NIL T) (NIL T))))
+         redefines the constant PECA-J0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (T NIL NIL))))
+         redefines the constant PECA-J1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T NIL) (T T))))
+         redefines the constant PECA-J2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL NIL T) (T T T))))
+         redefines the constant PECA-J3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-O0 (MAKE-ARRAY (LIST 2 2) :INITIAL-ELEMENT T))
+         redefines the constant PECA-O0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T NIL) (NIL T T))))
+         redefines the constant PECA-S0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (T NIL))))
+         redefines the constant PECA-S1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T T) (T T NIL))))
+         redefines the constant PECA-Z0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (NIL T))))
+         redefines the constant PECA-Z1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL T NIL))))
+         redefines the constant PECA-T0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (T NIL))))
+         redefines the constant PECA-T1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T2
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T NIL) (T T T))))
+         redefines the constant PECA-T2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T3
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (NIL T))))
+         redefines the constant PECA-T3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+;;  Loaded file utils.fas
+;; Loaded file 2a-entrega.lisp
+T
+Break 1 [8]> (mediador-1)
+WARNING: Already dribbling #<IO TERMINAL-STREAM> to
+         #<OUTPUT BUFFERED FILE-STREAM CHARACTER #P"mediador-1-out.txt">
+*** - EVAL/APPLY: Too few arguments (5 instead of at least 6) given to
+      PROCURA-BEST-PARAMETRIZADA
+The following restarts are available:
+ABORT          :R1      Abort debug loop
+ABORT          :R2      Abort main loop
+Break 2 [9]> (load "2a-entrega.lisp")
+;; Loading file 2a-entrega.lisp ...
+;;  Loading file utils.fas ...
+WARNING: (DEFCONSTANT PECA-I0 (MAKE-ARRAY (LIST 4 1) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-I1 (MAKE-ARRAY (LIST 1 4) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (T NIL) (T NIL))))
+         redefines the constant PECA-L0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T NIL NIL) (T T T))))
+         redefines the constant PECA-L1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (NIL T) (T T))))
+         redefines the constant PECA-L2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL NIL T))))
+         redefines the constant PECA-L3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (NIL T) (NIL T))))
+         redefines the constant PECA-J0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (T NIL NIL))))
+         redefines the constant PECA-J1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T NIL) (T T))))
+         redefines the constant PECA-J2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL NIL T) (T T T))))
+         redefines the constant PECA-J3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-O0 (MAKE-ARRAY (LIST 2 2) :INITIAL-ELEMENT T))
+         redefines the constant PECA-O0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T NIL) (NIL T T))))
+         redefines the constant PECA-S0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (T NIL))))
+         redefines the constant PECA-S1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T T) (T T NIL))))
+         redefines the constant PECA-Z0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (NIL T))))
+         redefines the constant PECA-Z1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL T NIL))))
+         redefines the constant PECA-T0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (T NIL))))
+         redefines the constant PECA-T1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T2
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T NIL) (T T T))))
+         redefines the constant PECA-T2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T3
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (NIL T))))
+         redefines the constant PECA-T3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+;;  Loaded file utils.fas
+;; Loaded file 2a-entrega.lisp
+T
+Break 2 [9]> (compile-file "testes.lisp")
+;; Compiling file /home/mkwtf/AI-Project/src/testes.lisp ...
+;; Wrote file /home/mkwtf/AI-Project/src/testes.fas
+0 errors, 0 warnings
+#P"/home/mkwtf/AI-Project/src/testes.fas" ;
+NIL ;
+NIL
+Break 2 [9]> (load "testes.fas")
+;; Loading file testes.fas ...
+;; Compiling file /home/mkwtf/AI-Project/src/tabuleiros-pre-computados.lisp ...
+WARNING: in #:|1 18001 (SETF TABULEIROS-PRE-COMPUTADOS #(# # # ...))-1| in
+         lines 1..18001 : TABULEIROS-PRE-COMPUTADOS is neither declared nor
+         bound,
+         it will be treated as if it were declared SPECIAL.
+;; Wrote file /home/mkwtf/AI-Project/src/tabuleiros-pre-computados.fas
+0 errors, 1 warning
+;;  Loading file /home/mkwtf/AI-Project/src/tabuleiros-pre-computados.fas ...
+;;  Loaded file /home/mkwtf/AI-Project/src/tabuleiros-pre-computados.fas
+;; Compiling file /home/mkwtf/AI-Project/src/pecas-pre-computadas.lisp ...
+WARNING: in #:|1 2 (SETF PECAS-PRE-COMPUTADAS #(# # # ...))-1| in lines 1..2 :
+         PECAS-PRE-COMPUTADAS is neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+;; Wrote file /home/mkwtf/AI-Project/src/pecas-pre-computadas.fas
+0 errors, 1 warning
+;;  Loading file /home/mkwtf/AI-Project/src/pecas-pre-computadas.fas ...
+;;  Loaded file /home/mkwtf/AI-Project/src/pecas-pre-computadas.fas
+;; Compiling file /home/mkwtf/AI-Project/src/tester.lisp ...
+WARNING: in MEDIADOR-1 in lines 1..15 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-1 in lines 1..15 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-1 in lines 1..15 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-1 in lines 1..15 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-1 in lines 1..15 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-1 in lines 1..15 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-2 in lines 17..31 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-2 in lines 17..31 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-2 in lines 17..31 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-2 in lines 17..31 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-2 in lines 17..31 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-2 in lines 17..31 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-3 in lines 33..47 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-3 in lines 33..47 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-3 in lines 33..47 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-3 in lines 33..47 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-3 in lines 33..47 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-3 in lines 33..47 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-4 in lines 49..63 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-4 in lines 49..63 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-4 in lines 49..63 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-4 in lines 49..63 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-4 in lines 49..63 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-4 in lines 49..63 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-5 in lines 65..79 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-5 in lines 65..79 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-5 in lines 65..79 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-5 in lines 65..79 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-5 in lines 65..79 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-5 in lines 65..79 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-6 in lines 81..95 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-6 in lines 81..95 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-6 in lines 81..95 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-6 in lines 81..95 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-6 in lines 81..95 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-6 in lines 81..95 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-7 in lines 97..111 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-7 in lines 97..111 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-7 in lines 97..111 : TABULEIROS-PRE-COMPUTADOS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-7 in lines 97..111 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-7 in lines 97..111 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-7 in lines 97..111 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-8 in lines 114..128 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-8 in lines 114..128 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-8 in lines 114..128 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-8 in lines 114..128 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-8 in lines 114..128 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-8 in lines 114..128 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-9 in lines 130..144 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-9 in lines 130..144 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-9 in lines 130..144 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-9 in lines 130..144 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-9 in lines 130..144 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-9 in lines 130..144 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-10 in lines 146..160 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-10 in lines 146..160 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-10 in lines 146..160 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-10 in lines 146..160 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-10 in lines 146..160 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-10 in lines 146..160 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-11 in lines 162..176 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-11 in lines 162..176 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-11 in lines 162..176 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-11 in lines 162..176 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-11 in lines 162..176 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-11 in lines 162..176 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-12 in lines 178..192 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-12 in lines 178..192 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-12 in lines 178..192 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-12 in lines 178..192 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-12 in lines 178..192 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-12 in lines 178..192 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-13 in lines 194..208 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-13 in lines 194..208 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-13 in lines 194..208 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-13 in lines 194..208 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-13 in lines 194..208 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-13 in lines 194..208 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-14 in lines 210..224 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-14 in lines 210..224 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-14 in lines 210..224 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-14 in lines 210..224 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-14 in lines 210..224 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-14 in lines 210..224 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-15 in lines 226..240 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-15 in lines 226..240 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-15 in lines 226..240 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-15 in lines 226..240 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-15 in lines 226..240 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-15 in lines 226..240 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-16 in lines 242..256 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-16 in lines 242..256 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-16 in lines 242..256 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-16 in lines 242..256 : PECAS-PRE-COMPUTADAS is neither
+         declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in MEDIADOR-16 in lines 242..256 : variable O is not used.
+         Misspelled or missing IGNORE declaration?
+WARNING: in MEDIADOR-16 in lines 242..256 : variable CNT is not used.
+         Misspelled or missing IGNORE declaration?
+;; Wrote file /home/mkwtf/AI-Project/src/tester.fas
+The following functions were used but not defined:
+ HEURISTICA-PONTUACAO
+The following special variables were not defined:
+ TABULEIROS-PRE-COMPUTADOS PECAS-PRE-COMPUTADAS
+0 errors, 96 warnings
+;;  Loading file /home/mkwtf/AI-Project/src/tester.fas ...
+;;  Loaded file /home/mkwtf/AI-Project/src/tester.fas
+;; Compiling file /home/mkwtf/AI-Project/src/2a-entrega.lisp ...
+WARNING: in OBTEM-TABULEIROS in lines 801..803 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+;; Wrote file /home/mkwtf/AI-Project/src/2a-entrega.fas
+The following special variables were not defined:
+ TABULEIROS-PRE-COMPUTADOS
+0 errors, 1 warning
+;;  Loading file /home/mkwtf/AI-Project/src/2a-entrega.fas ...
+;;   Loading file utils.fas ...
+WARNING: (DEFCONSTANT PECA-I0 (MAKE-ARRAY (LIST 4 1) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-I1 (MAKE-ARRAY (LIST 1 4) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (T NIL) (T NIL))))
+         redefines the constant PECA-L0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T NIL NIL) (T T T))))
+         redefines the constant PECA-L1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (NIL T) (T T))))
+         redefines the constant PECA-L2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL NIL T))))
+         redefines the constant PECA-L3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (NIL T) (NIL T))))
+         redefines the constant PECA-J0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (T NIL NIL))))
+         redefines the constant PECA-J1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T NIL) (T T))))
+         redefines the constant PECA-J2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL NIL T) (T T T))))
+         redefines the constant PECA-J3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-O0 (MAKE-ARRAY (LIST 2 2) :INITIAL-ELEMENT T))
+         redefines the constant PECA-O0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T NIL) (NIL T T))))
+         redefines the constant PECA-S0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (T NIL))))
+         redefines the constant PECA-S1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T T) (T T NIL))))
+         redefines the constant PECA-Z0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (NIL T))))
+         redefines the constant PECA-Z1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL T NIL))))
+         redefines the constant PECA-T0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (T NIL))))
+         redefines the constant PECA-T1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T2
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T NIL) (T T T))))
+         redefines the constant PECA-T2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T3
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (NIL T))))
+         redefines the constant PECA-T3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+;;   Loaded file utils.fas
+;;  Loaded file /home/mkwtf/AI-Project/src/2a-entrega.fas
+;; Compiling file /home/mkwtf/AI-Project/src/algoritmo-genetico.lisp ...
+WARNING: in ALGORITMO-GENETICO-FIXO-2 in lines 127..164 :
+         TABULEIROS-PRE-COMPUTADOS is neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in ALGORITMO-GENETICO-FIXO-2 in lines 127..164 :
+         TABULEIROS-PRE-COMPUTADOS is neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in ALGORITMO-GENETICO-PARAMETRIZADO-2 in lines 166..205 :
+         TABULEIROS-PRE-COMPUTADOS is neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+WARNING: in ALGORITMO-GENETICO-PARAMETRIZADO-2 in lines 166..205 :
+         TABULEIROS-PRE-COMPUTADOS is neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+;; Wrote file /home/mkwtf/AI-Project/src/algoritmo-genetico.fas
+The following functions were used but not defined:
+ ALGORITMO-GENETICO HEURISTICA-PONTUACAO HEURISTICA-PECAS-POR-COLOCAR
+ HEURISTICA-RELEVO HEURISTICA-ALTURA-4 HEURISTICA-ALTURA-MODULO-4
+The following special variables were not defined:
+ TABULEIROS-PRE-COMPUTADOS
+0 errors, 4 warnings
+;;  Loading file /home/mkwtf/AI-Project/src/algoritmo-genetico.fas ...
+;;  Loaded file /home/mkwtf/AI-Project/src/algoritmo-genetico.fas
+;; Compiling file /home/mkwtf/AI-Project/src/gen.lisp ...
+WARNING: (SETF FIND-CLASS): redefining class INDIVIDUO in
+         /home/mkwtf/AI-Project/src/gen.lisp, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: in OBTEM-TABULEIROS in lines 104..106 : TABULEIROS-PRE-COMPUTADOS is
+         neither declared nor bound,
+         it will be treated as if it were declared SPECIAL.
+;; Wrote file /home/mkwtf/AI-Project/src/gen.fas
+The following special variables were not defined:
+ TABULEIROS-PRE-COMPUTADOS
+0 errors, 2 warnings
+;;  Loading file /home/mkwtf/AI-Project/src/gen.fas ...
+WARNING: DEFUN/DEFMACRO: redefining function GENETICO-TOTAL in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function GENETICO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function CRIA-INDIVIDUO-ALEATORIO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function CRIA-POPULACAO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function INDIVIDUO> in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function MUTACAO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function OBTEM-PECAS in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function OBTEM-TABULEIROS in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function PRE-PROCESSA-PARA-SELECCAO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function PROBABILIDADE in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function REPRODUCAO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function SELECCAO-NATURAL in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function TETRIS-FITNESS in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function NORMA in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function NORMALIZA in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function RANDOM-NUMBER-FROM-TO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function EXECUTA-ACCOES in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function PONTUACAO in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function POTENCIA in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function DIVIDE-LISTA in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function MEAN in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+WARNING: DEFUN/DEFMACRO: redefining function CURRENT-DATE-STRING in
+         /home/mkwtf/AI-Project/src/gen.fas, was defined in
+         /home/mkwtf/AI-Project/src/2a-entrega.fas
+;;  Loaded file /home/mkwtf/AI-Project/src/gen.fas
+;; Compiling file /home/mkwtf/AI-Project/src/utils.lisp ...
+;; Wrote file /home/mkwtf/AI-Project/src/utils.fas
+0 errors, 0 warnings
+;;  Loading file /home/mkwtf/AI-Project/src/utils.fas ...
+WARNING: (DEFCONSTANT PECA-I0 (MAKE-ARRAY (LIST 4 1) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-I1 (MAKE-ARRAY (LIST 1 4) :INITIAL-ELEMENT T))
+         redefines the constant PECA-I1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (T NIL) (T NIL))))
+         redefines the constant PECA-L0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T NIL NIL) (T T T))))
+         redefines the constant PECA-L1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (NIL T) (T T))))
+         redefines the constant PECA-L2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-L3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL NIL T))))
+         redefines the constant PECA-L3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J0
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T T) (NIL T) (NIL T))))
+         redefines the constant PECA-J0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J1
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (T NIL NIL))))
+         redefines the constant PECA-J1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J2
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T NIL) (T T))))
+         redefines the constant PECA-J2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-J3
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL NIL T) (T T T))))
+         redefines the constant PECA-J3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: (DEFCONSTANT PECA-O0 (MAKE-ARRAY (LIST 2 2) :INITIAL-ELEMENT T))
+         redefines the constant PECA-O0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T NIL) (NIL T T))))
+         redefines the constant PECA-S0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-S1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (T NIL))))
+         redefines the constant PECA-S1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T T) (T T NIL))))
+         redefines the constant PECA-Z0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-Z1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (NIL T))))
+         redefines the constant PECA-Z1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T0
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((T T T) (NIL T NIL))))
+         redefines the constant PECA-T0. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T1
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((T NIL) (T T) (T NIL))))
+         redefines the constant PECA-T1. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T2
+           (MAKE-ARRAY (LIST 2 3) :INITIAL-CONTENTS '((NIL T NIL) (T T T))))
+         redefines the constant PECA-T2. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+WARNING: 
+          (DEFCONSTANT PECA-T3
+           (MAKE-ARRAY (LIST 3 2) :INITIAL-CONTENTS '((NIL T) (T T) (NIL T))))
+         redefines the constant PECA-T3. Its old value was visually similar
+         though. Set *SUPPRESS-SIMILAR-CONSTANT-REDEFINITION-WARNING* to avoid
+         this warning.
+;;  Loaded file /home/mkwtf/AI-Project/src/utils.fas
+WARNING: DEFUN/DEFMACRO: redefining function RANDOM-NUMBER-FROM-TO in
+         /home/mkwtf/AI-Project/src/testes.fas, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function EXECUTA-ACCOES in
+         /home/mkwtf/AI-Project/src/testes.fas, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function PONTUACAO in
+         /home/mkwtf/AI-Project/src/testes.fas, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function MEAN in
+         /home/mkwtf/AI-Project/src/testes.fas, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+WARNING: DEFUN/DEFMACRO: redefining function CURRENT-DATE-STRING in
+         /home/mkwtf/AI-Project/src/testes.fas, was defined in
+         /home/mkwtf/AI-Project/src/gen.fas
+;; Loaded file testes.fas
+T
+Break 2 [9]> (mediador-1)
+WARNING: Already dribbling #<IO TERMINAL-STREAM> to #<OUTPUT BUFFERED FILE-STREAM CHARACTER #P"mediador-1-out.txt">
+*** - FUNCALL: undefined function HEURISTICA-PONTUACAO
+The following restarts are available:
+USE-VALUE      :R1      Input a value to be used instead of (FDEFINITION 'HEURISTICA-PONTUACAO).
+RETRY          :R2      Retry
+STORE-VALUE    :R3      Input a new value for (FDEFINITION 'HEURISTICA-PONTUACAO).
+ABORT          :R4      Abort debug loop
+ABORT          :R5      Abort debug loop
+ABORT          :R6      Abort main loop
+Break 3 [10]> 
+Break 2 [9]> 
+Break 1 [8]> 
+[11]> 
+Bye.
+;; Dribble of #<IO TERMINAL-STREAM> started on 2015-11-30 21:46:06.
+
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 700" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+** - Continuable Error
+GC: User break
+If you continue (by typing 'continue'): Continue execution
+The following restarts are also available:
+ABORT          :R1      Abort main loop
+Break 1 [3]> :r1
+[4]> 
+Bye.
+;; Dribble of #<IO TERMINAL-STREAM> started on 2015-11-30 22:04:15.
+
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 700" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 700" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 700" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 800" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 100" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 700" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 700" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 100" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 100" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 200" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 300" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 600" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 400" 
+"       HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 500" 
+"FINAL: HP 0.3 | CB 0.07 | CO 0.63 RESULTADO: 409" 
+;; Dribble of #<IO TERMINAL-STREAM> finished on 2015-11-30 22:37:17.
