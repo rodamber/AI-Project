@@ -1,0 +1,5 @@
+*~
+*.fas
+*.lib
+2a-entrega.lisp
+.DS_Store
